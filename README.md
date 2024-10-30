@@ -3,8 +3,16 @@
 - CS分支：计算机C++开发/后端(比如找一些大中厂的工作)，见resume-zh_CN.tex 和 陈冠斌_个人简历_2025年6月毕业_CS.pdf
 - 使用:
 ````
-git clone https://github.com/congmingyige/Latex_Profile_CS.git
-git checkout CS 或者 git checkout OI
+fork一下
+git clone https://github.com/你的用户名/你的项目.git
+git checkout CS 或者 git checkout OI (选择某个分支)
+git remote set-url origin https://github.com/你的用户名/你的项目.git
+
+git checkout CS
+git add -A
+git commit -m "你的用户名(你的邮箱)"
+git push https://github.com/你的用户名/你的项目.git CS
+
 ````
 ![陈冠斌_个人简历_2025年6月毕业_CS](陈冠斌_个人简历_2025年6月毕业_CS.png)
 ![陈冠斌_个人简历_2025年6月毕业_OI](陈冠斌_个人简历_2025年6月毕业_OI.png)
