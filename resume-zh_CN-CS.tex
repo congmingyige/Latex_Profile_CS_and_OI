@@ -14,7 +14,7 @@
 \usepackage{enumitem}
 
 
-\geometry{a4paper,left=1.5cm,right=1.5cm,top=1.2cm,bottom=1.2cm} % 修改页边距，使得内容在一页范围内
+\geometry{a4paper,left=1.5cm,right=1.5cm,top=0.65cm,bottom=0.65cm} % 修改页边距，使得内容在一页范围内
 \begin{document}
 \pagenumbering{gobble} % suppress displaying page number
 
@@ -26,7 +26,7 @@
 
 \iffalse 
 \name{陈冠斌}
-\contactInfo{(+86)15682871716}{1249591860@qq.com}{OI编程教练}{}
+\contactInfo{(+86)15682871716}{1249591860@qq.com}{C++开发}{}
 \contactInfo{GitHub \textit{github.com/congmingyige}}{Blog \textit{cnblogs.com/cmyg}}{}{}
 \fi
 
@@ -34,7 +34,7 @@
 	\centering
 	\name{\Huge 陈冠斌} % 增大字体
 	\vspace{0.5em} % 调整名字和联系信息的间距
-	\contactInfo{(+86)15682871716}{1249591860@qq.com}{OI编程教练}{}
+	\contactInfo{(+86)15682871716}{1249591860@qq.com}{C++开发}{}
 	\contactInfo{GitHub \textit{github.com/congmingyige}}{Blog \textit{cnblogs.com/cmyg}}{}{}
 \end{minipage}%
 \begin{minipage}[t]{0.15\textwidth}
@@ -88,7 +88,7 @@
   \item \textbf{高教社杯数学建模本科组全国二等奖}
   \item 中国高校计算机大赛-团体程序设计天梯赛(CCCC)甘肃赛"珠峰登顶"组特等奖
   \item CSP计算机认证多次 $\geq$ 300分
-  \item NOIP普及组全国一等奖（广东省第7） \& NOIP提高组到达除广东省以外其它省份的一等奖分数线
+  \item NOIP普及组全国一等奖（广东省第7） \& NOIP提高组到达除广东省以外其它省份的全国一等奖分数线
   \item 初中数学竞赛全国一等奖（初二时与初三同台竞技获得）
   
 \end{itemize}
@@ -105,7 +105,7 @@
 % \end{itemize}
 
 \section{项目经历}
-\datedsubsection{\textbf{基于Swin Transformer方法的脑损伤全脑血管的分割和重建}}{}
+\datedsubsection{\textbf{基于Swin Transformer方法的脑损伤全脑血管的分割和重建}}{2024.6-2024.9}
 \begin{itemize}
 	\item \textbf{问题和描述}：三维图像血管分割和重建问题。血管存在二维和三维上的边缘断裂，信号不连续，干扰信号等问题。数据为三维数据，数据量极大，而且血管直径跨越多个数量级且结构复杂。
 	\item \textbf{3D特征提取网络的构建}：针对二维和三维信号不连续问题，学习图像中的上下文相关性，实现包含连通性和拓扑结构的完整分割。
@@ -114,7 +114,7 @@
 	\item \textbf{评估指标}：采用Accuracy、Precision、Recall、F1、clDice等参数进行评估。
 \end{itemize}
 
-\datedsubsection{\textbf{兰州大学程序设计竞赛等多项编程比赛的组织与出题}}{}
+\datedsubsection{\textbf{兰州大学程序设计竞赛等多项编程比赛的组织与出题}}{2017.1-2019.6}
 \begin{itemize}
 	\item \textbf{团队协作}：通过团队交流提升题目设计的质量，进行交叉验题，确保项目严格按照截止日期推进。
 	\item \textbf{规范化流程}：利用Polygon平台进行出题，设计极限数据，不同解法在比赛运行平台进行多重测试。
@@ -132,12 +132,13 @@
 
 
 % \section{\faInfo\ 社会实践/其他}
-\section{社区参与/实践其他}
+\section{社区参与/实践}
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.2ex]
-  \item \textbf{积极参与社区交流}：博客撰写Atcoder、CodeForces等编程竞赛赛后个人题解，并与国内外同行交流算法。天梯赛作为团队队长，归纳总结算法题型并开源。针对格式转换和翻译格式等问题，提供具体解决方案并开源。另外，博客探讨算法和数理知识的证明和应用，收获上万阅读量。
-  \item \textbf{乐于学习和使用前沿技术}：专注于如 ChatGPT 等前沿技术的探索，用于代码生成、修改和纠错等应用。日常使用OI-Wiki系统学习和查找算法，RSSHub订阅优质资源。
+  \item \textbf{积极参与社区交流}：博客撰写编程竞赛赛后个人题解，并与国内外同行交流算法。天梯赛作为团队队长，归纳总结算法题型并开源。另外，博客探讨算法和数理知识的证明和应用，收获上万阅读量。
+  \item \textbf{热情参与开发项目和开源}：曾编写电影推送系统(C, WinAPI; 图文界面和操作, 电影介绍, 不同情景电影推荐) \, ; \, 带有用户操作功能的文章阅读网页(Vue.js, HTTP, Django数据库; 团队协作; 用户和文章增删查改,用户对文章的点赞、收藏和评论,一个用户撰写、认可的所有文章) \, ; \, 地铁在线订票系统(Java, JLayeredPane, Algorithm; 多层结构、图缩放和多种点击方式, 点距离算法设计)。均已GitHub开源。
   \item \textbf{经常参与动手实践}：曾参与机器人竞赛创意比赛，设计附带底轮的垃圾桶的路径移动，提升软硬件设计与算法结合的实践能力。
+  \item \textbf{乐于学习和使用前沿技术}：专注于如 ChatGPT 等前沿技术的探索，用于代码生成、修改和纠错等应用。
   
 \end{itemize}
 
