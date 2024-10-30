@@ -1,3 +1,24 @@
+# 不同分支的介绍和使用
+- OI分支：编程竞赛(比如找编程竞赛教练的工作)，见resume-zh_CN-OI.tex 和 陈冠斌_个人简历_2025年6月毕业_OI.pdf
+- CS分支：计算机C++开发/后端(比如找一些大中厂的工作)，见resume-zh_CN.tex 和 陈冠斌_个人简历_2025年6月毕业_CS.pdf
+- 使用:
+````
+git clone https://github.com/congmingyige/Latex_Profile_CS.git
+git checkout CS 或者 git checkout OI
+````
+![陈冠斌_个人简历_2025年6月毕业_CS](陈冠斌_个人简历_2025年6月毕业_CS.png)
+![陈冠斌_个人简历_2025年6月毕业_OI](陈冠斌_个人简历_2025年6月毕业_OI.png)
+
+# 基于https://hijiangtao.github.io/的修改
+
+- **增加了个人图片（图片在右边），一行个人信息修改为两行个人信息（在图片左边），通过minipage三段的方式以及\textwidth，\vspace，\width参数来修改格式**
+- **修改页边距，使得内容在一页范围内，\geometry{a4paper,left=1.5cm,right=1.5cm,top=1.2cm,bottom=1.2cm}**
+- **项目修改：基于\textbf{加粗，突出你的关键内容，基于\item一一罗列你的内容**
+- 修改了简历顺序（个人总结放前面，注重竞赛，删除了论文和实习经历emmm）
+- 遇到问题：\item前面加换行符或者空格的问题。暂时不需要就先不管它了
+
+
+
 # 个人简历
 
 本项目为个人简历 Latex 源码存放，同时包含效果图呈现，简历入口为 resume-zh_CN.tex， 修改自项目 [resume](https://github.com/billryan/resume/)，若不想本地手动编译可以将该源码打包至 zip 直接上传至 ShareLatex 进行在线编译与预览。
