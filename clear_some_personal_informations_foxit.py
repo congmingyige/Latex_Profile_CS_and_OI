@@ -17,10 +17,9 @@ img = np.array(img1, dtype=np.uint8)
 # print(img.shape)
 
 value = 255 # 0
-ratio=1.42
-img[0:int(212*ratio), 0:int(640*ratio), :] = value
-img[int(217*ratio):int(255*ratio), 0:int(800*ratio), :] = value
-img[int(63*ratio):int(257*ratio), int(849*ratio):int(1058*ratio), :] = value
+img[0:212, 0:640, :] = value
+img[217:255, 0:800, :] = value
+img[63:257, 849:1058, :] = value
 
 img_new = Image.fromarray(img)
 

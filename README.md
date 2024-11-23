@@ -1,22 +1,30 @@
 # 不同分支的介绍和使用
-- OI分支：编程竞赛(比如找编程竞赛教练的工作)，见resume-zh_CN.tex 和 陈冠斌_个人简历_2025年6月毕业_OI.pdf
-- CS分支：计算机C++开发/后端(比如找一些大中厂的工作)，见resume-zh_CN.tex 和 陈冠斌_个人简历_2025年6月毕业_CS.pdf
-- 使用:
-````
-fork一下
-git clone https://github.com/你的用户名/你的项目.git
-git checkout CS 或者 git checkout OI (选择某个分支)
-git remote set-url origin https://github.com/你的用户名/你的项目.git
+- OI分支：编程竞赛（比如找编程竞赛教练的工作），参见 resume-zh_CN.tex 和 resume-zh_CN.pdf
+- CS分支：计算机软件开发/C++开发/后端（比如找一些大中厂的工作），参见 resume-zh_CN.tex 和 resume-zh_CN.pdf
+- **使用**:
+  - GitHub
+    ````
+    fork一下
+    git clone https://github.com/你的用户名/你的项目.git
+    git checkout CS 或者 git checkout OI (选择某个分支)
+    git remote set-url origin https://github.com/你的用户名/你的项目.git
 
-git checkout CS
-git add -A
-git commit -m "你的用户名(你的邮箱)"
-git push https://github.com/你的用户名/你的项目.git CS
-
-````
+    git checkout CS
+    git add -A
+    git commit -m "你的用户名(你的邮箱)"
+    git push https://github.com/你的用户名/你的项目.git CS
+    ````
+  - TexStudio
+    - 运行 resume-zh_CN.tex，生成resume-zh_CN.pdf（有界面）
 ![陈冠斌_个人简历_2025年6月毕业_CS](陈冠斌_个人简历_2025年6月毕业_CS_Page1.png)
 ![陈冠斌_个人简历_2025年6月毕业_CS](陈冠斌_个人简历_2025年6月毕业_CS_Page2.png)
 ![陈冠斌_个人简历_2025年6月毕业_OI](陈冠斌_个人简历_2025年6月毕业_OI.png)
+
+# 自动化脚本
+- python script.py
+  - 1. PDF修改名字
+  - 2. PDF转为PNG
+  - 3. 删除一下PNG的部分内容（然后你可以在小红书请教一下人）
 
 # 心得
 - 要用数据说话，要写出有震撼力的东西，粗体标注，比如"博客阅读量26万，随笔500篇"
