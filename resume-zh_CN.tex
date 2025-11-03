@@ -13,10 +13,18 @@
 \usepackage{tabularray}
 \usepackage{enumitem}
 \usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{xeCJK}
+\usepackage{tabularx} % 用于创建自动调整宽度的表格
+\usepackage{booktabs} % 用于创建更美观的横线 (top, mid, bottomrule)
+\usepackage{array}    % 用于 >{\raggedright\arraybackslash}
+
+% 定义一个新的列类型 X，使其内容左对齐而不是两端对齐
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
 
 %\setstretch{1.5}
 
-\geometry{a4paper,left=1.5cm,right=1.5cm,top=2cm,bottom=2cm} % 修改页边距，使得内容在一页范围内
+\geometry{a4paper,left=1.9cm,right=1.9cm,top=1.9cm,bottom=1.9cm} % 修改页边距，使得内容在一页范围内
 \begin{document}
 \pagenumbering{gobble} % suppress displaying page number
 
@@ -30,8 +38,9 @@
 	\centering
 	\name{\Huge 陈冠斌} % 增大字体
 	\vspace{0.5em} % 调整名字和联系信息的间距
-	\contactInfo{(+86)15682871716}{1249591860@qq.com}{}{}
-	\contactInfo{GitHub \textit{github.com/congmingyige}}{Blog \textit{cnblogs.com/cmyg}}{}{}
+	\contactInfo{(+86)15682871716}{1249591860@qq.com}{广东广州}{}
+	GitHub: \href{https://github.com/congmingyige?tab=repositories}{github.com/congmingyige} \quad|\quad 
+	Blog: \href{https://www.cnblogs.com/cmyg}{cnblogs.com/cmyg}
 \end{minipage}%
 \begin{minipage}[t]{0.15\textwidth}
 	\vspace{-2.4em} % 通过负值将图片向上移动 % 调整数值：\vspace
@@ -43,6 +52,7 @@
 \end{minipage}
 
 
+
 % $\photo[64pt]{./cgb_3712_3712.jpg}
 
 
@@ -51,7 +61,7 @@
 %\contactInfo{xxx@yuanbin.me}{(+86) 131-221-87xxx}{}
 
 \section{个人总结}
-对\textbf{常用数据结构和算法}具有敏锐的直觉与兴趣。曾获得\textbf{ ACM-ICPC 银奖}、\textbf{高教杯数学建模全国二等奖}以及\textbf{本科国家奖学金}。
+擅长\textbf{常用数据结构和算法}。曾获得\textbf{ ACM-ICPC 银奖}、\textbf{高教杯数学建模全国二等奖}以及\textbf{本科国家奖学金}。
 
 % \section{\faGraduationCap\ 教育背景}
 \section{教育背景}
@@ -76,62 +86,94 @@
 % \end{itemize}
 % \end{onehalfspacing}
 
-\section{竞赛获奖/项目作品}
+\section{竞赛获奖}
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.2ex]
 %   \item LeetCodeOJ Solutions, \textit{https://github.com/hijiangtao/LeetCodeOJ}
-  \item \textbf{ACM银奖}（2018亚洲区域赛焦作银奖、2018亚洲区域赛青岛银奖）
+  \item \textbf{ACM-ICPC区域赛银奖}（2018亚洲区域赛焦作分站银奖、2018亚洲区域赛青岛分站银奖）
   \item \textbf{高教社杯数学建模本科组全国二等奖}
-  \item 中国高校计算机大赛-团体程序设计天梯赛(CCCC)甘肃赛"珠峰登顶"组特等奖
+  \item 中国高校计算机大赛-团体程序设计天梯赛(CCCC)甘肃赛"珠峰登顶"组多次第一名
   \item CSP计算机认证多次 $\geq$ 300分
   \item NOIP普及组全国一等奖（广东省第7） \& NOIP提高组全国二等奖（考点广东省）
-  
 \end{itemize}
-
 
 % \section{\faCogs\ IT 技能}
 \section{技术能力}
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.2ex]
-	\item \textbf{编程语言和工具}: C++ / Python / Git / CET-6
-	\item \textbf{专业技能}：Linux / 前后端: HTML / JavaScript / SQL
-	\item \textbf{具体其它编程语言和专业技能见下}
+	\item \textbf{编程语言和工具}: C++ / Python / Git / CET-6 等
+	\item \textbf{专业技能}：Linux / HTML / JavaScript / SQL 等
+	\item \textbf{数据备份}：曾负责实验室集群数千TB数据备份，包括硬盘、磁带、光盘等方式
 \end{itemize}
 
 \section{实习经历}
 % increase linespacing [parsep=0.5ex]
-\begin{itemize}[parsep=0.2ex]
-	\item \textbf{中国三星 \quad 安卓开发 \quad 1个月}
+\datedsubsection{\textbf{佑驾创新 \quad C++开发和深度学习}}{2025.8-2025.9}
+\begin{itemize}	
+	\item \textbf{软件代码研读}：对乘客监测系统（OMS）的源代码架构进行了深度剖析，重点掌握了面部、躯干的算法及逻辑。
+
+	\item \textbf{实现驾驶员双手占用识别模块}：
+	\begin{itemize}
+		\item \textbf{问题}：驾驶者使用自动驾驶技术，有时脱离方向盘太久，无法在短时间内手回到方向盘并进行有效操作，汽车需要获取驾驶员当下的状态信息，并做出对应的策略。
+		\item \textbf{背景}：和汽车厂商进行合作，提供它们一个初步的可用版本。
+		\item \textbf{深度学习和代码错误检查}：详细学习双手和物体检测模型训练和推理全流程。检查出已有代码的三个错误，包括min/max的选择错误、检测框合并没有分类以及padding和图像有一个像素的重叠。
+		\item \textbf{C++开发}：把驾驶员双手占用识别模块集成到OMS系统中。包括已有类函数的复用、基于新场景（与过往具有不同的输出）设计的函数，包括NMS、手和物体检测框对应的数据结构和算法的设计，最后进行可视化显示。
+	\end{itemize} 
+\end{itemize}
+
+\datedsubsection{\textbf{中国三星 \quad 安卓SystemUI开发(Java、Kotlin)}}{2025.6-2025.7}
+\begin{itemize}
+	\item \textbf{模块源代码学习}：通过对系统UI模块的源代码进行剖析，深入理解了核心组件（如“快速设置”Tile 机制与电量指示器）的内部实现逻辑。
+	\item \textbf{网速显示模块的学习和设计}：重点学习了网速显示模块的跨版本（Android15至16）移植与适配。该任务基于网络连接状态、是否打开按钮以及屏幕亮息状态，并绘制了UML时序图。
 \end{itemize}
 
 % \end{itemize}
 
 \section{项目经历}
 
-\datedsubsection{\textbf{基于Swin Transformer方法的脑损伤全脑血管的分割和重建}}{2024.6-2024.9}
-\begin{itemize}	
-	\item \textbf{问题和描述}：三维图像血管分割和重建问题。血管存在二维和三维上的边缘断裂，信号不连续，干扰信号等问题。数据为三维数据，数据量极大，而且血管直径跨越多个数量级且结构复杂。
-	\item \textbf{3D特征提取网络的构建}：针对二维和三维信号不连续问题，学习图像中的上下文相关性，实现包含连通性和拓扑结构的完整分割。
-	\item \textbf{多尺度的特征提取}：通过层次化构建提取多尺度特征。其滑动窗口的多头自注意模块 (SW-MSA) 促进了窗口间的信息交互，并大幅降低计算量，解决了超大三维图像数据集分割速度慢的问题。
-	\item \textbf{运行环境}：网络使用 Pytorch 实现。实验在配备 8 个 NVIDIA Tesla V100 GPU 32GB 的服务器上并行训练。
-	\item \textbf{评估指标}：采用Accuracy、Precision、Recall、F1、clDice等参数进行评估。
-	\item \textbf{不同类型血管数据的分割和重建方法}：研究生期间，开发一系列针对不同场景的血管数据分割和重建方法，建立血管数据库，并形成一套完整的数据处理技术体系。分割方法包括Swin Transformer、SAM2、UNet、FCN等。
+\datedsubsection{\href{https://github.com/congmingyige/3D-Reconstruction-and-Quantitative-Analysis-of-Cerebral-Vasculature-under-Complex-Imaging-Conditions}{\textbf{基于Swin Transformer方法的脑损伤全脑高分辨率血管的分割、骨架化和网络分析}}}{2024.6-2025.7}
+\begin{itemize}
+\item \textbf{生物学背景}：脑很脆弱，短暂的大脑缺血带来脑损伤，脑血管系统是亟待研究的核心需求。脑血管网络就像一个城市的交通系统，动脉网络负责把最新鲜的“外卖”（富含氧气和葡萄糖的血液）送往脑四处，“送货上门”的毛细血管网络密集到每一个脑细胞旁边都有，脑细胞吃完“外卖”，会扔出“垃圾”（二氧化碳和废物），这些垃圾被扔回血液，通过静脉网络回收。
+
+\item \textbf{问题和描述}：脑血管的结构类似于地下庞大的水管网络，弯曲波折。成像数据需要精细，微血管的损伤在TBI的影响中发挥了重要作用。成像数据需要完整，因为脑血管是一个庞大的体系，需要系统性的研究。当满足了所有脑血管、任何位置都能清晰可见，高清，血管科研人员需要它，临床人员需要它（CT、MRI无法到达的分辨率），还有一些药物研发、疾病模型、血流模拟的工作需要它。离体数据的缺陷掩盖不了它的全脑完整高分辨率金子般的价值。我们需要对这些脑血管数据进行分割、骨架化和网络分析。
+
+\item \textbf{任务分工}：庄茁院士和骆清铭院士、龚辉教授团队合作课题。前者负责物理损伤实验，它是数千万军工项目的一部分，后者负责标记/转基因、生物、成像实验，它具有成像优势，曾发表在Science，可以获得离体全脑高分辨率血管数据，极少数单位能完成此工作。我负责后续的图像处理工作，包括预处理、分割、骨架化和网络分析。
+
+\item \textbf{图像分割数据规模}：单个数据图像大小为$11400 \times 8000 \times 13200$。全脑完整精细血管$\times 24$；包括健康 / 损伤数据。
+
+\item \textbf{图像数据规模庞大带来的痛点问题}：庞大的单套数据大小规模和血管数据（$10^1$、$10^2$、$10^3$、$10^4$量级），它带来了分割精度要求的巨大挑战，人工标记血管和修改分割后的错误位置无异于痴人说梦。无论是有监督方法分割还是无监督方法分割，哪怕提升一点，对于之后的定量分析、网络分析和血流模拟，都是巨大的提升。
+
+\item \textbf{图像数据特征带来的痛点问题}：血管存在二维和三维上的边缘断裂，信号不连续，干扰信号等问题。数据为三维数据，数据量极大，而且血管直径跨越多个数量级且结构复杂。
+
+\item \textbf{有监督深度学习分割方法}：共19种模型（不包括效果不好的模型）。有CV领域经典分割算法VoxResNet、FCN、VNet，有专门针对管状结构的顶会工作DSCNet，有常用的医学分割模型U-Net和nnUNet，有专门分割医学细胞、器官的分割模型nnFormer、UNETR++，有SAM作为主要模块的模型，如MedSAM2、SAM2-UNet（2D拼接）。
+
+\item \textbf{Swin Transformer方法优越性}：本工作把Swin Transformer应用到医学领域脑血管分割任务中。它采用层级特征，解决“单尺度”问题；血管直径$5\mu m - 500\mu m$；适用于多尺度信息的密集分割任务。它采用高效的计算，解决“计算量爆炸”问题；它采用窗口注意力，计算复杂度从平方级$O(N \times N)$降至线性级$O(N \times 49)$；它利于处理大图像，血管边缘分割效果较好，大图像可以获取更加有效的非冗余区域信息。它采用滑动窗口，W-MSA和SW-MSA，来增大感受野，大的感受野能更好理解损伤的情况，而小的感受野有点类似于管中窥豹。
+
+\item \textbf{Swin Transformer分割遇到的问题和模型改进}：Swin Transformer在大部分位置上分割效果较好，但是它出现了同一个血管被分割成多个血管的情况，可以类比为一条线段被断成了几截。本工作采用了SENet，自动学习哪些特征通道更重要，保证了血管分割的完整性，采用$5 \times 1 \times 1$的卷积增加Z方向的连通性，采用$3 \times 3\ \times 3$卷积叠加去增加小范围连通性，通过这些方法去解决血管断裂问题。同时，Swin Transformer分割存在少量噪点，以及添加的模块带来了棋盘格伪影，本工作采用了小型学习网络进行去噪，并且构建了一个复杂的棋盘格伪影去除模型。最后进行了消融实验来验证增加模块的有效性。
+
+\item \textbf{零样本分割方法}：标注过程高度依赖专家知识，耗时费力，具有显著的时间和经济成本。不同标注者的主观判断、经验水平和操作标准难以统一，不可避免地导致了显著的“观察者间误差”。同时不同批次数据的数据特征也不尽相同，有监督学习可迁移性不足。基础模型方法是为解决这些问题而进行的，这类模型经过模型大训练，之后遇到新的特征的数据，可以进行zero-shot、few-shot等手段，进行微调，就能很快获得较为理想的效果。本工作研究了零样本学习方法SAM2、SAMURAI、vesselFM等，并进行了改造和效果评估。vesselFM效果显著，只是在伪影和血管分叉处分割效果不是特别理想。
+
+\item \textbf{运行环境}：网络使用 Pytorch 实现。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理。采用脚本执行全脑血管分割、分析全流程Pipeline，并进行监控和管理，包括分割任务中块的多线程分配，一键在所有服务器节点上执行任务，自动检查所有程序运行状态（是否在运行和运行了多少）。构建了血管“工厂”，15台GPU服务器每2天能“生产”（分割、骨架化和分析）15套数据。
+
+\item \textbf{评估指标}：采用Accuracy、Precision、Recall、F1 Score、Dice、clDice、HD、HD95等参数进行评估。本研究方法在Accuracy、F1 Score、Dice、HD95取得最好效果，在重要的Dice指标上，比其它所有方法优$1-2\%$以上。
+
+\item \textbf{实现24套数据全脑分割和应用}：分别从长度密度、分叉点密度、血管夹角、子图结构和环结构等多个维度进行分析，结果显示损伤组和对照组在多个参数上具有显著性差异。按照脑区划分，有两种血管损伤模式，包括局部损伤和整体稀疏。
+
 \end{itemize}
 
-\datedsubsection{\textbf{博客阅读量26万，随笔500篇}}{2016.12-2024.11}
+\datedsubsection{\href{https://www.cnblogs.com/cmyg}{\textbf{博客阅读量26万，随笔500篇}}}{2016.12-2025.7}
 \begin{itemize}
-  \item \textbf{博客撰写编程竞赛赛后个人题解}：每次编程比赛后坚持写题解和查看学习他人优秀的题解和代码，并与国内外同行交流算法。
-  \item \textbf{格式转换; JavaScript; HTTP; Python}：博客撰写``Word批量修改图片大小"(4w阅读量)。\textbf{2024.10月份}，编写GitHub``DeepLearning 500 questions"项目和GitHub``cpp learning"项目的批量自动转PDF文档，涉及各种格式的处理难题。针对这个问题撰写博客并GitHub开源。
+  \item \textbf{博客撰写编程竞赛赛后个人题解}：每次编程比赛后坚持写题解和查看学习他人优秀的题解和代码，并与国内外同行交流算法。比如在牛客网的知名赛事"Accepted极限代码巅峰赛"写\href{https://www.nowcoder.com/discuss/683481897465372672?sourceSSR=users}{题解}，并收获了19个点赞。
+  \item \textbf{格式转换; JavaScript; HTTP; Python}：博客撰写``Word批量修改图片大小"(4w阅读量)。编写GitHub``Deep Learning 500 questions"项目和GitHub``cpp learning"项目的批量自动转PDF文档，涉及各种格式的处理难题，针对这个问题撰写博客并GitHub开源。
   \item \textbf{博客探讨算法和数理知识的证明和应用}：``波利亚罐子模型证明"(5k阅读量)，``卡方分布"(5k阅读量)，洛谷算法平台撰写10页``快速沃尔什变换"推导。
 \end{itemize}
 
-\datedsubsection{\textbf{热情参与开发项目和开源}}{2016.12-2024.11}
+\datedsubsection{\href{https://github.com/congmingyige?tab=repositories}{\textbf{热情参与开发以及数据结构和算法应用}}}{2016.12-2025.7}
 \begin{itemize}
-	\item \textbf{数十万行C++数据结构和算法经验}：编程竞赛的经历让我积累了丰富的数据结构与算法经验，并熟练掌握了C++的实现。精通常用的计算机数据结构和算法，比如STL、搜索、动态规划、图论、数论等。
+	\item \textbf{大量C++数据结构和算法经验}：编程竞赛的经历让我积累了丰富的数据结构与算法经验，并熟练掌握了C++的实现。精通常用的计算机数据结构和算法，比如STL、动态规划、搜索、图论、数论等。
 	\item \textbf{积极和他人交流和探讨算法}：乐于与他人探讨常用的数据结构和算法问题，交流过的人数以十计。
 	\item \textbf{丰富数学建模经历; MatLAB; LaTex; 团队合作}：鏖战三天，写下400行MatLAB代码，撰写优秀LaTex文档。参与学校答辩，向老师们汇报并学习，斩获高教杯本科全国二等奖。同时还积极参与美赛等数学建模比赛，撰写英文PDF，和国内外选手同台竞技和交流。
-	\item \textbf{数据备份; Linux; 集群; 移动硬盘; 磁带库; 光盘; 规范化流程}：负责实验室数千TB数据备份长达一年。
-	\item \textbf{热情参与开发项目和开源。项目均已GitHub开源}：
+	\item \textbf{热情参与开发项目。项目均已GitHub开源}：
 		\begin{itemize}
 			\item \textbf{带有用户操作功能的文章阅读网页}(Front-End: Vue.js, HTML/CSS, JavaScript, HTTP; \, Back-End: Python, Django.db; \, 团队合作; \, 用户和文章增删查改,用户对文章的点赞、收藏和评论,一个用户撰写、认可的所有文章)。
 			\item \textbf{电影推送系统}(C, WinAPI(窗口管理, 消息处理, 控件管理, 绘图和图形, 文件操作); \, 图文界面和操作, 电影介绍, 不同情景电影推荐)。
@@ -142,11 +184,15 @@
 
 \datedsubsection{\textbf{兰州大学程序设计竞赛等多项编程比赛的组织与出题}}{2017.1-2019.6}
 \begin{itemize}
-	\item \textbf{团队协作}：通过团队交流提升题目设计的质量，进行交叉验题，确保项目严格按照截止日期推进。
-	\item \textbf{规范化流程}：利用Polygon平台进行出题，设计极限数据，不同解法在比赛运行平台进行多重测试。
-	\item \textbf{创新性和行业贡献}：挖掘新的问题和算法场景，探索不同数据范围和约束下的解法，致力于做具有成就感和行业价值的事情。
-	\item \textbf{个人成长}：在经历\textbf{500}多道题的经典算法题目学习基础上，共参与出题\textbf{20}余道，参与验题\textbf{30}余道，对于搜索、动态规划、图论等数据结构和算法有更深了解。
-	\item \textbf{资源传承}：包括各类题目的多种语言标准程序和验题、LaTeX文档、以及比赛后针对同学具体答题情况的详细总结文档等资源，都可以传承给后届同学。
+\item \textbf{团队协作与项目管理}：通过高频团队研讨提升题目设计质量，执行严格的交叉验题流程。主导项目进度控制，确保所有命题任务高质效地按期交付。
+
+\item \textbf{标准化命题与测试}：熟练运用 \textbf{Polygon} 平台进行标准化命题。专注于设计高强度的边界/极限测试数据，并对多种标程与暴力解法进行多重回归测试，确保测试数据的鲁棒性。
+
+\item \textbf{算法创新与场景探索}：致力于挖掘新颖的算法问题模型与应用场景。深入探索了不同数据范围和约束条件下的解法复杂度与性能权衡。
+
+\item \textbf{算法能力与实践沉淀}：在 \textbf{500+} 道经典算法题目的坚实基础上，累计独立命题 \textbf{20+} 道，参与验题 \textbf{30+} 道。对搜索（DFS/BFS）、动态规划（DP）、图论等核心数据结构与算法有体系化的深入理解。
+
+\item \textbf{知识库构建与传承}：负责构建并沉淀了高质量的竞赛知识库。内容包括多语言标准程序、验题数据、标准化LaTeX题解、以及赛后复盘总结文档，为后续团队提供了宝贵的知识资产。
 \end{itemize}
 
 % \section{\faHeartO\ 项目/作品摘要}
@@ -162,8 +208,8 @@
 \section{社区参与/实践}
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.2ex]  
-  \item \textbf{经常参与软硬件动手实践}：曾参与机器人竞赛创意比赛，设计附带底轮的垃圾桶的路径移动，提升软硬件设计与算法结合的实践能力。本科和研究生期间也有汇编原理课程设计(软硬件)， 电路与电子技术等实验。
-  \item \textbf{乐于学习和使用ChatGPT等前沿技术}：专注于探索 ChatGPT 等前沿技术，并将其应用于代码开发、算法实现以及文档编写等场景。
+  \item \textbf{经常参与软硬件动手实践}：曾参与\textbf{机器人}竞赛创意比赛，设计附带底轮的垃圾桶的路径移动，提升软硬件设计与算法结合的实践能力。本科和研究生期间也有汇编原理课程设计(软硬件)， 电路与电子技术等实验。
+  \item \textbf{AI辅助编程}：使用Cursor、Gemini、GitHub Copilot、ChatGPT、Deepseek、豆包等AI工具应用于代码开发多场景。
   
 \end{itemize}
 
