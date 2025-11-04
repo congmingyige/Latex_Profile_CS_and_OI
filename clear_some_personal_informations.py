@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 
 # 读取图片
-img1 = Image.open('陈冠斌_个人简历_Page1.jpg')
+img1 = Image.open('陈冠斌_个人简历.jpg')
 img = np.array(img1, dtype=np.uint8)
 
 # 图片处理（覆盖区域）
