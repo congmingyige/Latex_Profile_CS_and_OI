@@ -15,7 +15,12 @@
 \usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{xeCJK}
-\usepackage{tabularx} % 用于创建自动调整宽度的表格
+%\setCJKmainfont{Microsoft YaHei}
+%\setCJKmainfont{SimHei}   % 中文用Windows自带黑体
+%\setmainfont{Arial}       % 英文/数字继续用Arial（若Arial也报错，可换为“Times New Roman”）
+
+
+\usepackage{tabularx} % 用于创建自动调整宽度的表
 \usepackage{booktabs} % 用于创建更美观的横线 (top, mid, bottomrule)
 \usepackage{array}    % 用于 >{\raggedright\arraybackslash}
 \usepackage{ifthen}
@@ -27,7 +32,7 @@
 
 %\setstretch{1.5}
 
-\def\JobIndex{2}
+\def\JobIndex{3}
 
 %--------------
 %--------------
@@ -45,7 +50,10 @@
 \def\outputFileName{C++开发工程师-导航规划}
 \or
 % x=3 (您可以在这里定义 x=3 时的岗位名称)
-\def\outputFileName{陈冠斌-简历-岗位3}
+\def\outputFileName{小鹏}
+\or
+% x=4 (您可以在这里定义 x=4 时的岗位名称)
+\def\outputFileName{TikTok产品客户(Android/iOS)}
 \else
 % 默认/错误情况
 \def\outputFileName{陈冠斌-简历-错误}
@@ -131,11 +139,10 @@
 % \section{\faGraduationCap\ 教育背景}
 \section{教育背景}
 
+\datedsubsection{\textbf{华中科技大学},\textbf{计算机科学与技术},\textit{硕士研究生}}{2019.9 - 2025.9}
+一等学业奖学金，共青团先进个人
 \datedsubsection{\textbf{兰州大学},\textbf{计算机科学与技术},\textit{学士}}{2015.9 - 2019.6}
 学业成绩排名2/69(前3\%)，\textbf{国家奖学金}，兰州大学优秀毕业生
-\datedsubsection{\textbf{华中科技大学},\textbf{计算机科学与技术},\textit{硕士研究生}}{2019.9 - 2025.9}
-一等学业奖学金，共青团先进个人。保送直博，直博转硕
-
 
 % \begin{onehalfspacing}
 % \end{onehalfspacing}
@@ -155,31 +162,30 @@
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.2ex]
 %   \item LeetCodeOJ Solutions, \textit{https://github.com/hijiangtao/LeetCodeOJ}
-  \item \textbf{ACM-ICPC区域赛银奖}（2018亚洲区域赛焦作分站银奖、2018亚洲区域赛青岛分站银奖）
+  \item \textbf{ACM-ICPC区域赛银奖}（2018亚洲区域赛焦作和青岛分站银奖）
   \item \textbf{高教社杯数学建模本科组全国二等奖}
-  \item 中国高校计算机大赛-团体程序设计天梯赛(CCCC)甘肃赛"珠峰登顶"组多次第一名
-  \item CSP计算机认证多次 $\geq$ 300分
-  \item NOIP普及组全国一等奖（广东省第7） \& NOIP提高组全国二等奖（考点广东省）
+  \item NOIP信息学奥林匹克普及组全国一等奖（广东省第7） \& 数学竞赛全国一等奖（初二参加初中组）
 \end{itemize}
 
 \section{实习经历}
 % increase linespacing [parsep=0.5ex]
-\datedsubsection{\textbf{佑驾创新 \quad C++开发和深度学习}}{2025.8-2025.9}
+\datedsubsection{\textbf{佑驾创新 \quad C++开发和深度学习}}{2025.8-至今}
 \begin{itemize}	
 	\item 软件代码研读：对乘客监测系统（OMS）的源代码架构进行了深度剖析，重点掌握了面部、躯干的算法及逻辑。
-
 	\item 实现驾驶员双手占用识别模块：
 	\begin{itemize}
-		\item 问题：驾驶者使用自动驾驶技术，有时脱离方向盘太久，无法在短时间内手回到方向盘并进行有效操作，汽车需要获取驾驶员当下的状态信息，并做出对应的策略。
-		\item 背景：和汽车厂商进行合作，提供它们一个初步的可用版本。
-		\item 学习深度学习全流程和实现代码错误修正：详细学习双手和物体检测模型训练和推理全流程。检查出已有代码的三个技术性错误。
-		\item 实现双手占用识别模块功能集成：把驾驶员双手占用识别模块集成到OMS系统中，包括图像分割的前处理和后处理逻辑，对NMSMerger以及手和物体对应的数据结构进行新场景下的设计。
+		\item \textbf{问题背景}：在自动驾驶场景下，驾驶员长时间脱离方向盘后难以快速接管车辆，系统需要实时检测驾驶员双手占用状态，并据此制定安全接管策略。本项目与汽车厂商合作，旨在交付初步可用版本。
+		
+		\item \textbf{深度学习模型学习与代码优化}：系统学习双手检测和物体检测模型的训练与推理全流程，深入理解模型架构和数据处理流程。在代码审查过程中，发现并修正了三个技术性错误，提升了代码质量和系统稳定性。
+		
+		\item \textbf{模块集成与系统设计}：将驾驶员双手占用识别模块集成至乘客监测系统（OMS），完成图像分割的前处理和后处理逻辑实现。针对新场景需求，重新设计了NMSMerger模块以及手部和物体检测相关的数据结构，确保模块能够高效、准确地识别驾驶员双手占用状态。
 	\end{itemize} 
 \end{itemize}
 
 \datedsubsection{\textbf{中国三星 \quad 安卓SystemUI开发(Java、Kotlin)}}{2025.6-2025.7}
 \begin{itemize}
 	\item 模块源代码学习：对系统UI模块的源代码进行剖析，深入理解了核心组件（如Tile等）的内部实现逻辑。
+	
 	\item 网速显示模块的学习和设计：重点学习了网速显示模块的跨版本（Android15至16）移植与适配。该任务基于网络连接状态、是否打开按钮以及屏幕亮息状态，并绘制了UML时序图。
 \end{itemize}
 
@@ -187,12 +193,15 @@
 
 \section{项目经历}
 
-\datedsubsection{\href{https://github.com/congmingyige/3D-Reconstruction-and-Quantitative-Analysis-of-Cerebral-Vasculature-under-Complex-Imaging-Conditions}{\textbf{基于Swin Transformer的脑损伤全脑完整高分辨率血管的分割、骨架化和网络分析}}}{2024.6-2025.7}
+\datedsubsection{\href{https://github.com/congmingyige/3D-Reconstruction-and-Quantitative-Analysis-of-Cerebral-Vasculature-under-Complex-Imaging-Conditions}{\textbf{基于Swin Transformer的脑损伤血管的分割}}}{2024.1-2025.5}
 \begin{itemize}
-\item 背景：脑血管合作题目。合作单位负责脑损伤物理实验，本实验室负责成像，具有离体成像优势（数据完整、精细、可定位）。本人负责对三维全脑完整精细脑血管进行分割、骨架化和网络分析。
-\item 难题1和解决方法：脑血管分割属于典型的多尺度密集分割任务，损伤特征依赖于扩大感受野来有效提取。本工作系统性地评估了 19 种有监督深度学习方法和零样本方法，基于多层次、自注意力机制和滑动窗口的 Swin Transformer 效果最佳。
-\item 难题2和解决方法：Swin Transformer分割结果出现血管断裂的问题，额外增加的模块可能带来额外的噪点问题。采用了SENet，自动学习哪些特征通道更重要，保证了血管分割的完整性，采用$5 \times 1 \times 1$的卷积增加Z方向的连通性，采用$3 \times 3\ \times 3$卷积叠加去增加小范围连通性，通过这些方法去解决血管断裂问题。同时分割存在少量噪点，以及添加的模块带来了棋盘格伪影，本工作采用了小型学习网络进行去噪，并且构建了棋盘格伪影去除模块。最后进行了消融实验来验证增加模块的有效性。
-\item 产出：本模型在8个评估参数的4个达到最优，其中Dice参数优于其它方法1\%以上。网络使用 Pytorch 实现。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理，每2-3天可以处理15套数据的完整分割、骨架化和可视化。本工作实现了24套健康和损伤数据的完整处理，单套数据图像大小为$11400 \times 8000 \times 13200$，分辨率为$1 \times 1\ \times 1 \mu m$（降采样操作），可用于医药企业的血流动力学模拟，临床基础研究。
+\item 背景：脑血管合作题目。清华大学庄茁院士团队负责脑损伤物理实验，华中科技大学骆清铭院士团队负责成像，具有离体成像优势（数据完整、精细、可定位）。本人负责对三维全脑完整精细脑血管进行分割、骨架化和网络分析。脑血管分割属于典型的多尺度密集分割任务，损伤特征依赖于扩大感受野来有效提取，同时分割结果容易出现血管断裂和噪点问题。
+\item 方法：本工作系统性地评估了 19 种有监督深度学习方法和零样本方法，基于多层次、自注意力机制和滑动窗口的 Swin Transformer 效果最佳。将卷积层、窗口分割、相对位置编码和patch等操作从2D扩展到3D。增加了若干模块，结合 SENet 注意力机制，确保血管分割结果的完整性，采用$5 \times 1 \times 1$的卷积和$3 \times 3\ \times 3$卷积去Z方向和小范围连通性。采用小型学习网络和棋盘格检测器进行噪点和棋盘格的抑制。每2-3天可以处理15套健康或损伤数据的完整分割、骨架化和可视化，可用于医药企业的血流动力学模拟，临床基础研究。
+\item 技术栈：网络使用 Pytorch 实现。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理
+
+\item 难题1和解决方法：。
+\item 难题2和解决方法：Swin Transformer。采用了SENet，自动学习哪些特征通道更重要，保证了血管分割的完整性，增加Z方向的连通性，采叠加去增加小范围连通性，通过这些方法去解决血管断裂问题。同时分割存在少量噪点，以及添加的模块带来了棋盘格伪影，本工作采用了小型学习网络进行去噪，并且构建了棋盘格伪影去除模块。最后进行了消融实验来验证增加模块的有效性。
+\item 产出：，每2-3天可以处理15套数据的完整分割、骨架化和可视化。本工作实现了24套健康和损伤数据的完整处理，可用于医药企业的血流动力学模拟，临床基础研究。
 \end{itemize}
 
 \ifthenelse{\equal{\JobIndex}{2}}{
@@ -200,8 +209,28 @@
 	\begin{itemize}
 		\item \textbf{掌握/了解常见图论算法}：DFS/BFS/Dijkstra/Bellman–Ford/SPFA/Kruskal/Prim/拓扑排序/Tarjan/哈密顿图/LCA/倍增算法/树链剖分/树分治/树的直径/线段树/网络流/A*/VRP/强化学习。
 		\item \textbf{编程比赛的图论出题和参加比赛的图论使用}：包括多源BFS等出题题目。包括华为杯统计图的环数目等比赛。
+		\item {博客对图论的研究}：500+篇博客文章，不少关于图论的工作。
 	\end{itemize} 
 }
+
+\ifthenelse{\equal{\JobIndex}{4}}{
+\item 客户端：
+\begin{itemize}
+	\item Android部分重要模块和网速显示模块的跨版本（Android15至16）移植与适配的源码阅读经验。
+	\item IOS设备深度使用（Iphone、Ipad、Mac、Watch、Airpods），对IOS Liquad Glass进行研究(\href{https://github.com/congmingyige/Silksong-Sightseeing-Tour-Plugin}{\textbf{开源}})。
+	\item 积累数百小时与 Apple 客服的交流经验，不仅解决功能使用问题，更积极参与提议新功能和改进。
+\end{itemize}
+
+\section{客户端开发相关经验}
+\begin{itemize}
+	\item 网页文献翻译(\href{https://github.com/congmingyige/translate-ignore-mathjax-available-for-google-translate}{\textbf{开源}})：使用Power Automatic和Tampermonkey Javascript进行多篇网页文献的翻译，包括浏览器滚动、页面自动跳转，公式、变量不翻译等功能。
+	
+	\item GitHub项目转为PDF（\href{https://github.com/congmingyige/convert-multiply-html-files-to-pdf}{\textbf{开源1}}和\href{https://github.com/congmingyige/convert-multiply-markdown-files-to-pdf}{\textbf{开源2}}）：GitHub cpp-learning项目和DeepLearning 500 questions项目的资源转为PDF，涉及针对爬虫限制的处理、图片自动加载、markdown、网页和PDF格式处理、自动点击等功能。
+	
+	
+\end{itemize}
+}
+
 
 \ifthenelse{\equal{\JobIndex}{1}}{
 \section{游戏客户端工具开发相关经验}
