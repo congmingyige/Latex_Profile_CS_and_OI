@@ -197,15 +197,15 @@
 \begin{itemize}
 \item 背景：脑血管合作题目。清华大学庄茁院士团队负责脑损伤物理实验，华中科技大学骆清铭院士团队负责成像，具有离体成像优势（数据完整、精细、可定位）。本人负责对三维全脑完整精细脑血管进行分割、骨架化和网络分析。脑血管分割属于典型的多尺度密集分割任务，损伤特征依赖于扩大感受野来有效提取，同时分割结果容易出现血管断裂和噪点问题。
 \item 方法：本工作系统性地评估了 19 种有监督深度学习方法和零样本方法，基于多层次、自注意力机制和滑动窗口的 Swin Transformer 效果最佳。将Patch Embedding、Patch Merging、Window Partition、Window Attention等操作从2D扩展到3D。增加了若干模块，结合 SENet 注意力机制，确保血管分割结果的完整性，采用$5 \times 1 \times 1$的卷积和$3 \times 3\ \times 3$卷积去Z方向和小范围连通性。采用小型学习网络和棋盘格检测器进行噪点和棋盘格的抑制。每2-3天可以处理15套健康或损伤数据的完整分割、骨架化和可视化，可用于医药企业的血流动力学模拟，临床基础研究。
-\item 技术栈：PyTorch、NumPy、SciPy、SimpleITK/nibabel（医学图像处理）、NetworkX（骨架化和网络分析）、分布式训练（DDP）、TensorBoard（训练监控）。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理。
+\item 技术栈：PyTorch、NumPy、SciPy、SimpleITK/nibabel/libtiff（医学图像处理）、NetworkX（骨架化和网络分析）、DataParallel、TensorBoard（训练监控）。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理。
 \end{itemize}
 
 \ifthenelse{\equal{\JobIndex}{2}}{
 	\section{图论研究}
 	\begin{itemize}
 		\item \textbf{掌握/了解常见图论算法}：DFS/BFS/Dijkstra/Bellman–Ford/SPFA/Kruskal/Prim/拓扑排序/Tarjan/哈密顿图/LCA/倍增算法/树链剖分/树分治/树的直径/线段树/网络流/A*/VRP/强化学习。
-		\item \textbf{编程比赛的图论出题和参加比赛的图论使用}：包括多源BFS等出题题目。包括华为杯统计图的环数目等比赛。
-		\item {博客对图论的研究}：500+篇博客文章，不少关于图论的工作。
+		\item \textbf{编程比赛和比赛}：包括多源BFS等出题题目。包括华为杯统计图的环数目等比赛。
+		\item {博客}：500+篇博客文章，挺多涉及图论的使用和研究工作。
 	\end{itemize} 
 }
 
