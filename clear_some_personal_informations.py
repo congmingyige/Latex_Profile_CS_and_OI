@@ -8,7 +8,11 @@ img = np.array(img1, dtype=np.uint8)
 # 图片处理（覆盖区域）
 value = 255  # 填充白色
 
-img[0:360, 0:1800, :] = value
+# img[0:360, 0:1800, :] = value
+
+img[0:540, 0:1800, :] = value
+
+
 # img[217:255, 0:800, :] = value
 # img[63:257, 849:1058, :] = value
 
