@@ -23,14 +23,12 @@
 
 \newwrite\namefile
 
-% 定义一个新的列类型 X，使其内容左对齐而不是两端对齐
-% \newcolumntype{L}{>{\raggedright\arraybackslash}X}
-
 %\setstretch{1.5}
 
 \def\JobIndex{0}
 
 %--------------
+% 岗位配置
 %--------------
 
 \def\outputFileName{陈冠斌-简历-通用}
@@ -57,150 +55,165 @@
 
 % 在文档编译完成后自动重命名PDF文件
 % 注意：需要在TeXstudio中启用shell-escape选项
-% 方法：选项 -> 配置TeXstudio -> 构建 -> 构建命令 -> 在XeLaTeX命令中添加 --shell-escape
-% 例如：xelatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+% 
+% 【配置步骤】：
+% 1. 打开TeXstudio
+% 2. 菜单：选项 -> 配置TeXstudio（或按 Alt+O）
+% 3. 左侧选择"构建"
+% 4. 在"构建命令"区域找到"XeLaTeX"命令框
+% 5. 将命令修改为（在原有命令中添加 --shell-escape）：
+%    xelatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+% 6. 点击"确定"保存
+% 
+% 【默认命令格式】：
+% 原命令：xelatex -synctex=1 -interaction=nonstopmode %.tex
+% 新命令：xelatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+% 
+% 注意：--shell-escape 必须放在命令的最后部分（在 %.tex 之前）
 \AtEndDocument{%
   \IfFileExists{\jobname.pdf}{%
-    \immediate\write18{cp "\jobname.pdf" "\outputFileName.pdf" 2>/dev/null || copy "\jobname.pdf" "\outputFileName.pdf" 2>nul}%
+    % 先展开变量，确保outputFileName在write18中正确展开
+    \edef\tempjobname{\jobname}%
+    \edef\tempoutputname{\outputFileName}%
+    % 构建完整的命令字符串，确保所有变量都被展开
+    \edef\tempcmd{cp "\tempjobname.pdf" "\tempoutputname.pdf" 2>/dev/null || copy "\tempjobname.pdf" "\tempoutputname.pdf" 2>nul}%
+    \immediate\write18{\tempcmd}%
   }{}%
 }
 
 %--------------
+% 页边距配置
 %--------------
 
 \ifcase\JobIndex
-% \ifcase 从 0 开始计数，但您想从 x=1 开始。
-% 所以 Case 0 (x=0) 留空，或者用于默认设置。
-% Case 0 (如果 \PageMarginCase 为 0)
+% Case 0: 默认页边距
 \geometry{a4paper,left=1.4cm,right=1.4cm,top=1.4cm,bottom=1.4cm}
 \or
-% Case 1 (如果 \PageMarginCase 为 1): x = 1
+% Case 1: 米哈游
 \geometry{a4paper,left=1.8cm,right=1.8cm,top=1.8cm,bottom=1.8cm}
 \or
-% Case 2 (如果 \PageMarginCase 为 2): x = 2
+% Case 2: C++开发工程师
 \geometry{a4paper,left=1.7cm,right=1.7cm,top=1.7cm,bottom=1.7cm}
 \or
-% Case 3 (如果 \PageMarginCase 为 3): x = 3
+% Case 3: 小鹏
 \geometry{a4paper,left=2.0cm,right=2.0cm,top=2.0cm,bottom=2.0cm}
 \or
-% Case 4 (如果 \PageMarginCase 为 4): x = 4
+% Case 4: TikTok
 \geometry{a4paper,left=1.8cm,right=1.8cm,top=1.8cm,bottom=1.8cm}
 \else
-% 默认/错误情况 (如果 \PageMarginCase 是其他任何值)
-\geometry{a4paper,margin=2.5cm} % 设置一个安全默认值
+% 默认/错误情况
+\geometry{a4paper,margin=2.5cm}
 \fi
 
-%\geometry{a4paper,left=1.4cm,right=1.4cm,top=1.4cm,bottom=1.4cm} % 修改页边距，使得内容在一页范围内
 \begin{document}
 \pagenumbering{gobble} % suppress displaying page number
 
-% {E-mail}{mobilephone}{homepage}
-% be careful of _ in emaill address
+%--------------
+% 个人信息
+%--------------
 
-\begin{minipage}[t]{0.78\textwidth} % 调整minipage多个0.78/0.15/0.07，0.8/0.2的大小，调整图片width的大小，调整\vspace移动大小
+\begin{minipage}[t]{0.78\textwidth}
 	\centering
-	\name{\Huge 陈冠斌} % 增大字体
-	\vspace{0.5em} % 调整名字和联系信息的间距
+	\name{\Huge 陈冠斌}
+	\vspace{0.5em}
 	\contactInfo{(+86)15682871716}{1249591860@qq.com}{广东广州}{}
 	GitHub: \href{https://github.com/congmingyige?tab=repositories}{github.com/congmingyige} \quad|\quad 
 	Blog: \href{https://www.cnblogs.com/cmyg}{cnblogs.com/cmyg}
 	
 	\ifcase\JobIndex
-	% \ifcase 从 0 开始计数，但您想从 x=1 开始。
-	% 所以 Case 0 (x=0) 留空，或者用于默认设置。
-	% Case 0 (如果 \PageMarginCase 为 0)
 	\relax
 	\or
-	% Case 1 (如果 \PageMarginCase 为 1): x = 1
+	% Case 1: 米哈游
 	应聘岗位：游戏客户端工具开发
 	\fi
-	
 \end{minipage}%
 \begin{minipage}[t]{0.15\textwidth}
-	\vspace{-2.4em} % 通过负值将图片向上移动 % 调整数值：\vspace
+	\vspace{-2.4em}
 	\begin{flushright}
-		\includegraphics[width=1\textwidth]{cgb.jpg} % 调整图片大小以适配文字高度
+		\includegraphics[width=1\textwidth]{cgb.jpg}
 	\end{flushright}
 \end{minipage}
 \begin{minipage}[t]{0.07\textwidth}
 \end{minipage}
 
-% $\photo[64pt]{./cgb_3712_3712.jpg}
+%--------------
+% 教育背景
+%--------------
 
-% {E-mail}{mobilephone}
-% keep the last empty braces!
-%\contactInfo{xxx@yuanbin.me}{(+86) 131-221-87xxx}{}
-
-% \section{\faGraduationCap\ 教育背景}
 \section{教育背景}
 
 \datedsubsection{\textbf{华中科技大学},\textbf{计算机科学与技术},\textit{硕士研究生}}{2019.9 - 2025.9}
 一等学业奖学金，共青团先进个人
+
 \datedsubsection{\textbf{兰州大学},\textbf{计算机科学与技术},\textit{学士}}{2015.9 - 2019.6}
-学业成绩排名2/69(前3\%)，\textbf{国家奖学金}，兰州大学优秀毕业生
+学业成绩排名2/69（前3\%），\textbf{国家奖学金}，兰州大学优秀毕业生
 
-% \begin{onehalfspacing}
-% \end{onehalfspacing}
-
-% \datedsubsection{\textbf{DID-ACTE} 荷兰莱顿}{2015年}
-% \role{本科毕业设计}{LIACS 交换生}
-% 利用结巴分词对中国古文进行分词与词性标注，用已有领域知识训练形成 classifier 并对结果进行调优
-% \begin{onehalfspacing}
-% \begin{itemize}
-%   \item 利用结巴分词对中国古文进行分词与词性标注
-%   \item 利用已有领域知识训练形成 classifier, 并用分词结果进行测试反馈
-%   \item 尝试不同规则，对 classifier 进行调优
-% \end{itemize}
-% \end{onehalfspacing}
+%--------------
+% 竞赛获奖
+%--------------
 
 \section{竞赛获奖}
-% increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.2ex]
-  \item \textbf{ACM-ICPC区域赛银奖}（2018亚洲区域赛焦作和青岛分站银奖）
+  \item \textbf{ACM-ICPC区域赛银奖}（2018亚洲区域赛焦作分站银奖、2018亚洲区域赛青岛分站银奖）
   \item \textbf{高教社杯数学建模本科组全国二等奖}
   \item NOIP信息学奥林匹克普及组全国一等奖（广东省第7） \& 数学竞赛全国一等奖（初二参加初中组）
 \end{itemize}
 
+%--------------
+% 实习经历
+%--------------
+
+
 \section{实习经历}
 % increase linespacing [parsep=0.5ex]
-\datedsubsection{\textbf{佑驾创新 \quad C++开发和深度学习}}{2025.8-至今}
-\begin{itemize}	
-	\item \textbf{软件代码研读}：对乘客监测系统（OMS）的源代码架构进行了深度剖析，重点掌握了面部、躯干的算法及逻辑。
-	
+\datedsubsection{\textbf{佑驾创新 \quad 智能座舱研发 \quad C++ \quad 深圳}}{2025.8-至今}
+\begin{itemize}
+	\item \textbf{源码研读}：对乘客监测系统（OMS）的源代码架构进行了深度剖析，重点掌握了面部检测、躯干检测的算法及逻辑。
 	\item \textbf{实现驾驶员双手占用识别模块}：
 	\begin{itemize}
-		\item \textbf{问题背景}：在自动驾驶场景下，驾驶员长时间脱离方向盘后难以快速接管车辆，系统需要实时检测驾驶员双手占用状态，并据此制定安全接管策略。本项目与汽车厂商合作，旨在交付初步可用版本。
+		\item \textbf{问题背景}：在自动驾驶场景下，驾驶员双手长时间脱离方向盘后难以快速接管车辆，系统需要实时检测驾驶员双手占用状态，并据此制定安全接管策略。本项目与汽车厂商合作，旨在交付初步可用版本。
 		
-		\item \textbf{深度学习模型学习与代码优化}：系统学习双手检测和物体检测模型的训练与推理全流程，深入理解模型架构和数据处理流程。在代码审查过程中，发现并修正了三个技术性错误，提升了代码质量和系统稳定性。
+		\item \textbf{深度学习模型学习与代码优化}：系统地学习双手和物体检测模型的训练与推理全流程，深入理解模型架构和数据处理流程。通过单元测试和集成测试，发现并修正了三个技术性错误，提升了代码质量和系统稳定性。
 		
-		\item \textbf{模块集成与系统设计}：将驾驶员双手占用识别模块集成至乘客监测系统（OMS），完成图像分割的前处理和后处理逻辑实现。针对新场景需求，重新设计了NMSMerger模块以及手部和物体检测相关的数据结构，确保模块能够高效、准确地识别驾驶员双手占用状态。
+		\item \textbf{模块集成与系统设计}：将驾驶员双手占用识别模块集成至乘客监测系统（OMS），完成目标检测的前处理和后处理逻辑实现。针对新场景需求，重新设计了NMSMerger模块以及手部和物体检测相关的数据结构，确保模块能够高效、准确地识别驾驶员双手占用状态。
 	\end{itemize} 
 \end{itemize}
 
-\datedsubsection{\textbf{中国三星 \quad 安卓SystemUI开发(Java、Kotlin)}}{2025.6-2025.7}
+\datedsubsection{\textbf{中国三星 \quad Android SystemUI研发 \quad Java、Kotlin \quad 广州}}{2025.6-2025.7}
 \begin{itemize}
-	\item \textbf{模块源代码学习}：对系统UI模块的源代码进行剖析，深入理解了核心组件（如Tile等）的内部实现逻辑。
+	\item \textbf{模块源代码学习}：对Android系统UI模块的源代码进行剖析，深入理解了核心组件（Tile等）的内部实现逻辑。
 	
-	\item \textbf{网速显示模块的学习和设计}：重点学习了网速显示模块的跨版本（Android15至16）移植与适配。该任务基于网络连接状态、是否打开按钮以及屏幕亮息状态，并绘制了UML时序图。
+	\item \textbf{网速显示模块的学习和设计}：重点学习了网速显示模块的跨版本（Android 15至16）移植与适配。该任务基于网络连接状态、开关状态以及屏幕亮息状态，并绘制了UML时序图。
 \end{itemize}
+
+
+
+%--------------
+% 项目经历
+%--------------
 
 \section{项目经历}
 
-\datedsubsection{\href{https://github.com/congmingyige/3D-Reconstruction-and-Quantitative-Analysis-of-Cerebral-Vasculature-under-Complex-Imaging-Conditions}{\textbf{基于Swin Transformer的脑损伤血管的分割}}}{2024.1-2025.5}
+\datedsubsection{\href{https://github.com/congmingyige/3D-Reconstruction-and-Quantitative-Analysis-of-Cerebral-Vasculature-under-Complex-Imaging-Conditions}{\textbf{基于Swin Transformer的脑损伤血管分割、骨架化和网络分析}}}{2024.1-2025.5}
 \begin{itemize}
-\item \textbf{背景}：本项目为脑血管研究合作课题，清华大学庄茁院士团队负责脑损伤物理实验，华中科技大学骆清铭院士团队负责成像，具有离体成像优势（数据完整、精细、可定位）。本人负责对三维全脑完整精细脑血管进行分割、骨架化和网络分析。脑血管分割属于典型的多尺度密集分割任务，损伤特征依赖于扩大感受野来有效提取，同时分割结果容易出现血管断裂和噪点问题。
+\item \textbf{背景}：跨学科脑血管研究合作课题，清华大学庄茁院士团队负责脑损伤物理实验，华中科技大学骆清铭院士团队负责成像，具有离体成像优势（数据完整、精细、可定位）。本人负责对三维全脑完整精细脑血管进行分割、骨架化和网络分析。脑血管分割属于典型的多尺度密集分割任务，损伤特征依赖于扩大感受野来有效提取，同时分割结果容易出现血管断裂和噪点问题。
 
-\item \textbf{方法}：本工作系统性地评估了 19 种有监督深度学习方法和零样本方法，基于多层次、自注意力机制和滑动窗口的 Swin Transformer 效果最佳。将Patch Embedding、Patch Merging、Window Partition、Window Attention等操作从2D扩展到3D。针对血管分割断裂问题，采用 SENet 注意力机制增强血管分割结果的完整性，采用$5 \times 1 \times 1$的卷积和$3 \times 3\ \times 3$卷积叠加增强Z方向和小尺度连通性。针对噪点和棋盘格伪影问题，采用小型学习网络和棋盘格检测器进行抑制。每2-3天可处理15套健康或损伤数据的完整分割、骨架化和可视化，可用于医药企业的血流动力学模拟和临床基础研究。
+\item \textbf{方法}：本工作系统性地评估了 $19$ 种有监督深度学习方法和零样本方法，基于多层次、自注意力机制和滑动窗口的 Swin Transformer 效果最佳。将Patch Embedding、Patch Merging、Window Partition、Window Attention等操作从2D模型扩展到3D模型。增加了若干模块，结合 SENet 注意力机制，增强血管分割结果的完整性，采用$5 \times 1 \times 1$的卷积和$3 \times 3\ \times 3$卷积叠加分别增强Z方向和小尺度连通性。采用小型学习网络和棋盘格检测器对噪点进行抑制。每2-3天的周期，可以处理15套健康或损伤数据的完整分割、骨架化和可视化，。用于医药企业的血流动力学模拟，临床基础研究。
 
 \item \textbf{技术栈}：PyTorch、NumPy、SciPy、SimpleITK/nibabel/libtiff（医学图像处理）、NetworkX（骨架化和网络分析）、DataParallel、TensorBoard（训练监控）。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理。
+
 \end{itemize}
+
+%--------------
+% 条件分支内容
+%--------------
 
 \ifthenelse{\equal{\JobIndex}{2}}{
 	\section{图论研究}
 	\begin{itemize}
 		\item \textbf{掌握/了解常见图论算法}：DFS/BFS/Dijkstra/Bellman–Ford/SPFA/Kruskal/Prim/拓扑排序/Tarjan/哈密顿图/LCA/倍增算法/树链剖分/树分治/树的直径/线段树/网络流/A*/VRP/强化学习。
-		\item \textbf{编程比赛和出题}：包括多源BFS等出题题目。包括华为杯统计图的环数目等比赛。
-		\item \textbf{博客}：500+篇博客文章，涉及图论的使用和研究工作。
+		\item \textbf{编程比赛和出题}：参与多源BFS等图论题目的出题工作，在华为杯等比赛中使用图论算法解决统计图的环数目等复杂问题。
+		\item \textbf{博客}：撰写500+篇博客文章，内容涉及图论算法的使用和研究工作，分享算法实现和优化经验。
 	\end{itemize} 
 }
 
@@ -209,20 +222,20 @@
 	\begin{itemize}
 		\item \textbf{Android开发}：
 		\begin{itemize}
-			\item Android部分重要模块和网速显示模块的跨版本（Android15至16）移植与适配的源码阅读经验。
+			\item 深入阅读Android系统UI模块的源代码，掌握核心组件（如QuickSettings Tile、SystemUI Controller等）的实现原理。重点学习了网速显示模块的跨版本（Android 15至16）移植与适配，理解系统UI的架构设计和状态管理机制。
 		\end{itemize}
 		
 		\item \textbf{iOS开发}：
 		\begin{itemize}
-			\item iOS设备深度使用（iPhone、iPad、Mac、Watch、AirPods），对iOS Liquid Glass进行研究(\href{https://github.com/congmingyige/Silksong-Sightseeing-Tour-Plugin}{\textbf{开源}})。
-			\item 积累数百小时与 Apple 客服的交流经验，不仅解决功能使用问题，更积极参与提议新功能和改进。
+			\item iOS设备深度使用（iPhone、iPad、Mac、Watch、AirPods），对iOS Liquid Glass界面设计进行研究，并开源相关项目(\href{https://github.com/congmingyige/Silksong-Sightseeing-Tour-Plugin}{\textbf{开源}})。
+			\item 积累数百小时与Apple客服的交流经验，不仅解决功能使用问题，更积极参与产品改进建议，对iOS生态有深入理解。
 		\end{itemize}
 		
 		\item \textbf{自动化工具开发}：
 		\begin{itemize}
-			\item 网页文献翻译(\href{https://github.com/congmingyige/translate-ignore-mathjax-available-for-google-translate}{\textbf{开源}})：使用Power Automate和Tampermonkey Javascript进行多篇网页文献的翻译，包括浏览器滚动、页面自动跳转，公式、变量不翻译等功能。
+			\item 网页文献翻译(\href{https://github.com/congmingyige/translate-ignore-mathjax-available-for-google-translate}{\textbf{开源}})：使用Power Automate和Tampermonkey Javascript开发自动化翻译工具，支持多篇网页文献的批量翻译，包括浏览器滚动、页面自动跳转，公式、变量不翻译等智能功能。
 			
-			\item GitHub项目转为PDF（\href{https://github.com/congmingyige/convert-multiply-html-files-to-pdf}{\textbf{开源1}}和\href{https://github.com/congmingyige/convert-multiply-markdown-files-to-pdf}{\textbf{开源2}}）：GitHub cpp-learning项目和DeepLearning 500 questions项目的资源转为PDF，涉及针对爬虫限制的处理、图片自动加载、markdown、网页和PDF格式处理、自动点击等功能。
+			\item GitHub项目转为PDF（\href{https://github.com/congmingyige/convert-multiply-html-files-to-pdf}{\textbf{开源1}}和\href{https://github.com/congmingyige/convert-multiply-markdown-files-to-pdf}{\textbf{开源2}}）：开发自动化工具将GitHub cpp-learning项目和DeepLearning 500 questions项目的资源转为PDF，实现了针对爬虫限制的处理、图片自动加载、markdown和HTML到PDF的格式转换、自动点击等复杂功能。
 		\end{itemize}
 	\end{itemize}
 }
@@ -231,58 +244,46 @@
 \section{游戏客户端工具开发相关经验}
 \begin{itemize}
 \item \textbf{游戏体验}：
-	深度体验《雀魂》《丝之歌》《崩坏：星穹铁道》等多款游戏，从早期版本到付费版本均有完整体验。通过游戏社群和身边同学了解不同游戏的评价与设计理念，对游戏机制和用户体验有深入理解。
+	深度体验《雀魂》《丝之歌》《崩坏：星穹铁道》等多款游戏，从早期版本到付费版本均有完整体验。通过游戏社群和身边同学了解不同游戏的评价与设计理念，对游戏机制、用户体验设计和交互流程有深入理解，能够从玩家和开发者双重视角分析游戏设计。
 
 \item \textbf{客户端开发}：
 \begin{itemize}
-	\item Android部分重要模块和网速显示模块的跨版本（Android15至16）移植与适配的源码阅读经验。
-	\item iOS设备深度使用（iPhone、iPad、Mac、Watch、AirPods），对iOS Liquid Glass进行研究(\href{https://github.com/congmingyige/Silksong-Sightseeing-Tour-Plugin}{\textbf{开源}})。
-	\item 积累数百小时与 Apple 客服的交流经验，不仅解决功能使用问题，更积极参与提议新功能和改进。
+	\item Android系统UI模块源码阅读经验，重点学习了网速显示模块的跨版本（Android 15至16）移植与适配，理解系统UI的架构设计和状态管理机制。
+	\item iOS设备深度使用（iPhone、iPad、Mac、Watch、AirPods），对iOS Liquid Glass界面设计进行研究，并开源相关项目(\href{https://github.com/congmingyige/Silksong-Sightseeing-Tour-Plugin}{\textbf{开源}})。
+	\item 积累数百小时与Apple客服的交流经验，不仅解决功能使用问题，更积极参与产品改进建议，对iOS生态有深入理解。
 \end{itemize}
 
 \item \textbf{自动化和开源工具}：
 \begin{itemize}
-	\item 深度学习项目采用自动化脚本对15台服务器14个流程进行统一管理和监控。
-	\item 网页文献翻译(\href{https://github.com/congmingyige/translate-ignore-mathjax-available-for-google-translate}{\textbf{开源}})：使用Power Automate和Tampermonkey Javascript进行多篇网页文献的翻译，包括浏览器滚动、页面自动跳转，公式、变量不翻译等功能。
-	\item GitHub项目转为PDF（\href{https://github.com/congmingyige/convert-multiply-html-files-to-pdf}{\textbf{开源1}}和\href{https://github.com/congmingyige/convert-multiply-markdown-files-to-pdf}{\textbf{开源2}}）：GitHub cpp-learning项目和DeepLearning 500 questions项目的资源转为PDF，涉及针对爬虫限制的处理、图片自动加载、markdown、网页和PDF格式处理、自动点击等功能。
+	\item 深度学习项目采用自动化脚本对15台服务器14个流程进行统一管理和监控，实现了高效的分布式任务调度和状态监控。
+	\item 网页文献翻译(\href{https://github.com/congmingyige/translate-ignore-mathjax-available-for-google-translate}{\textbf{开源}})：使用Power Automate和Tampermonkey Javascript开发自动化翻译工具，支持多篇网页文献的批量翻译，包括浏览器滚动、页面自动跳转，公式、变量不翻译等智能功能。
+	\item GitHub项目转为PDF（\href{https://github.com/congmingyige/convert-multiply-html-files-to-pdf}{\textbf{开源1}}和\href{https://github.com/congmingyige/convert-multiply-markdown-files-to-pdf}{\textbf{开源2}}）：开发自动化工具将GitHub cpp-learning项目和DeepLearning 500 questions项目的资源转为PDF，实现了针对爬虫限制的处理、图片自动加载、markdown和HTML到PDF的格式转换、自动点击等复杂功能。
 \end{itemize} 
 	
 \item \textbf{创意与技术力}：
 \begin{itemize}
-	\item \textbf{追求高质量工具，提高工作效率}：与Notion、Microsoft TODO官方人员有关于功能和使用上的大量邮件交流，不仅包括功能使用的提问、bug 反馈，还涵盖功能优化的建议。并主动和他人分享、推广高质量工具。
+	\item \textbf{追求高质量工具，提高工作效率}：与Notion、Microsoft TODO官方人员有关于功能和使用上的大量邮件交流，不仅包括功能使用的提问、bug反馈，还涵盖功能优化的建议。主动和他人分享、推广高质量工具，推动工具生态的改进。
 	
 	\item \textbf{丝之歌插件初步设想（\href{https://github.com/congmingyige/Silksong-Sightseeing-Tour-Plugin}{\textbf{开源}}）}：
 		\begin{itemize}
-			\item \textbf{美学分析与痛点识别}：从美学上分析，有两处很出彩，一是角色行过，突起鸟影，连续动画即刻展开；二是驰骋于视野尽头的坦途，感受RT模块启动带来的贴背推力，目之所及皆是变幻的万千景域。痛点分析：一是当达到即将离开水面和上台阶的地方，RT加速将中断，导致美好体验中断；二是用户只是想体验一下独特的风景和角色移动体验，奈何游戏难度对于大部分玩家不友好，很容易死亡。
+			\item \textbf{美学分析与痛点识别}：从美学角度分析，游戏有两处设计亮点：一是角色行过时，突起鸟影，连续动画即刻展开，营造出动态美感；二是驰骋于视野尽头的坦途，感受RT模块启动带来的贴背推力，目之所及皆是变幻的万千景域。痛点分析：一是当达到即将离开水面和上台阶的地方，RT加速将中断，导致美好体验中断；二是用户只是想体验独特的风景和角色移动体验，奈何游戏难度对于大部分玩家不友好，很容易死亡。
 			
-			\item \textbf{技术方案设计}：设计插件包含UI和按键功能，包括拉动条修改移动速度，以及左/右/左加速/右加速移动。关于角色移动左/右若干距离，有三种技术方案：一是采用Unity，当前背景修改为某一帧；二是采用视频：前进/倒退多少帧；三是基于丝之歌游戏进行插件开发。
+			\item \textbf{技术方案设计}：设计插件包含UI和按键功能，包括拉动条修改移动速度，以及左/右/左加速/右加速移动。关于角色移动左/右若干距离，提出了三种技术方案：一是采用Unity引擎，将当前背景修改为某一帧；二是采用视频处理：前进/倒退多少帧；三是基于丝之歌游戏进行插件开发，通过hook和mod技术实现。
 			
-			\item \textbf{实现细节}：对于第三种技术方案，使用多种不同的mod进行辅助，包括不死、无限武器/灵魂、无限二段跳、一击必杀、小骑士与大黄蜂自由切换mod。设计两个功能：一是短距离从A到B（单次操作），二是长距离从A到B（只操作左/右），同时针对多分叉情形进行设计。还包括实现从任意位置到任意位置的走动，采用不死mod（大幅减少开发难度）、加速mod（大幅减少用户等待时间）以及自动到达起点位置（大幅减少用户操作时间）。
+			\item \textbf{实现细节}：对于第三种技术方案，使用多种不同的mod进行辅助，包括不死、无限武器/灵魂、无限二段跳、一击必杀、小骑士与大黄蜂自由切换mod。设计两个核心功能：一是短距离从A到B（单次操作），二是长距离从A到B（只操作左/右），同时针对多分叉情形进行路径规划设计。还包括实现从任意位置到任意位置的走动，采用不死mod（大幅减少开发难度）、加速mod（大幅减少用户等待时间）以及自动到达起点位置（大幅减少用户操作时间）。
 		\end{itemize}
 	
 	\item \textbf{设计可重构组合式日麻牌挂饰}：
 	\begin{itemize}
 		\item 通过相邻磁铁间的吸引力，实现日麻牌的灵活组合与牢固结合，支持高自由度的复杂图案构建和重新组合（比如东南西北、中发白、红宝牌555、1919）。通过打印文字或图案贴纸在日麻牌上的粘贴（支持多次粘撕），支持更复杂图案（比如AA2333，X月Y日晴）。
 		
-		\item 日麻牌的组合有外置磁铁、内置磁铁和3D空心外壳三种方案，最终从成本、时间、实现难度考量选择外置磁铁方案，并追求极致超薄外置磁铁厚度追求美观性。
+		\item 日麻牌的组合有外置磁铁、内置磁铁和3D空心外壳三种方案，经过成本、时间、实现难度的综合考量，选择外置磁铁方案，并追求极致超薄外置磁铁厚度以提升美观性。
 		
-		\item 进行负载与悬挂几何分析，确定最佳挂绳长度区间，确保挂饰挂在挎包上的功能性与美观度。购买不同种类精美挂绳和扣环。购买优质胶水确保无味无色。
+		\item 进行负载与悬挂几何分析，确定最佳挂绳长度区间，确保挂饰挂在挎包上的功能性与美观度。精心挑选不同种类的精美挂绳和扣环。使用优质胶水确保无味无色，符合日常使用标准。
 	\end{itemize}
 \end{itemize}
 
 \end{itemize}
 }
 
-% \section{\faHeartO\ 项目/作品摘要}
-% \section{项目/作品摘要}
-% \datedline{\textit{An Integrated Version of Security Monitor Vis System}, https://hijiangtao.github.io/ss-vis-component/ }{}
-% \datedline{\textit{Dark-Tech}, https://github.com/hijiangtao/dark-tech/ }{}
-% \datedline{\textit{融合社交网络数据挖掘的电视节目可视化分析系统}, https://hijiangtao.github.io/variety-show-hot-spot-vis/}{}
-% \datedline{\textit{LeetCodeOJ Solutions}, https://github.com/hijiangtao/LeetCodeOJ}{}
-% \datedline{\textit{Info-Vis}, https://github.com/ISCAS-VIS/infovis-ucas}{}
-
-%% Reference
-%\newpage
-%\bibliographystyle{IEEETran}
-%\bibliography{mycite}
 \end{document}
