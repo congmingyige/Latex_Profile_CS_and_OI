@@ -25,7 +25,7 @@
 
 %\setstretch{1.5}
 
-\def\JobIndex{1}
+\def\JobIndex{4}
 
 %--------------
 % 岗位配置
@@ -114,13 +114,16 @@
 
 \ifcase\JobIndex
 % Case 0: 默认页边距
-\geometry{a4paper,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
+\def\myMargin_0{1.90cm}
+\geometry{a4paper,left=\myMargin_0,right=\myMargin_0,top=\myMargin_0,bottom=\myMargin_0}
 \or
 % Case 1: 米哈游
-\geometry{a4paper,left=1.8cm,right=1.8cm,top=1.8cm,bottom=1.8cm}
+\def\myMargin_1{1.90cm}
+\geometry{a4paper,left=\myMargin_1,right=\myMargin_1,top=\myMargin_1,bottom=\myMargin_1}
 \or
 % Case 2: C++开发工程师
-\geometry{a4paper,left=1.7cm,right=1.7cm,top=1.7cm,bottom=1.7cm}
+\def\myMargin_2{1.90cm}
+\geometry{a4paper,left=\myMargin_2,right=\myMargin_2,top=\myMargin_2,bottom=\myMargin_2}
 \or
 % Case 3: 小鹏
 \geometry{a4paper,left=2.0cm,right=2.0cm,top=2.0cm,bottom=2.0cm}
@@ -240,8 +243,9 @@
 	\begin{itemize}
 		\item \textbf{掌握/了解常见图论算法}：DFS/BFS/Dijkstra/Bellman–Ford/SPFA/Kruskal/Prim/拓扑排序/Tarjan/哈密顿图/LCA/倍增算法/树链剖分/树分治/树的直径/线段树/网络流/A*/VRP/强化学习。
 		\item \textbf{编程比赛和出题}：参与多源BFS等图论题目的出题工作，在华为杯等比赛中使用图论算法解决统计图的环数目等复杂问题。
-		\item \textbf{博客}：撰写500+篇博客文章，内容涉及图论算法的使用和研究工作，分享算法实现和优化经验。
-	\end{itemize} 
+		\item \textbf{博客}：撰写500+篇博客文章，内容涉及图论算法的使用和研究工作。
+		\item \textbf{}：
+	\end{itemize}
 }
 
 \ifthenelse{\equal{\JobIndex}{4}}{
@@ -249,7 +253,7 @@
 	\begin{itemize}
 		\item \textbf{Android开发}：
 		\begin{itemize}
-			\item 深入阅读Android系统UI模块的源代码，掌握核心组件（如QuickSettings Tile、SystemUI Controller等）的实现原理。重点学习了网速显示模块的跨版本（Android 15至16）移植与适配，理解系统UI的架构设计和状态管理机制。
+			\item 深入阅读Android系统UI模块的源代码，掌握核心组件（如QuickSettings Tile、SystemUI Controller等）的实现原理。重点学习了网速显示模块的跨版本（Android 15至16）移植与适配，理解系统UI的架构设计。
 		\end{itemize}
 		
 		\item \textbf{iOS开发}：
@@ -267,11 +271,23 @@
 	\end{itemize}
 }
 
+\ifthenelse{\equal{\JobIndex}{1}\OR\equal{\JobIndex}{4}}{
+%\ifthenelse{\equal{\JobIndex}{2}}{
+
 \ifthenelse{\equal{\JobIndex}{1}}{
 \section{游戏客户端工具开发相关经验}
+}
+
+\ifthenelse{\equal{\JobIndex}{2}}{
+	\section{客户端工具开发相关经验}
+}
+
 \begin{itemize}
+	
+\ifthenelse{\equal{\JobIndex}{1}}{
 \item \textbf{游戏体验}：
 	深度体验《崩坏：星穹铁道》《丝之歌》《雀魂》等多款游戏，从免费模式（肝剧情）到付费模式（包括月卡等）均有完整体验。通过游戏社群和身边同学了解不同游戏的评价与设计理念，对游戏机制、用户体验设计和交互流程有深入理解，能够从玩家和开发者双重视角分析游戏设计。
+}
 
 \item \textbf{客户端开发}：
 \begin{itemize}
@@ -285,9 +301,11 @@
 	\item 深度学习项目采用自动化脚本对15台服务器14个流程进行统一管理和监控，实现了高效的分布式任务调度和状态监控。
 	\item 网页文献翻译(\href{https://github.com/congmingyige/translate-ignore-mathjax-available-for-google-translate}{\textbf{开源}})：使用Power Automate和Tampermonkey Javascript开发自动化翻译工具，支持多篇网页文献的批量翻译，包括浏览器滚动、页面自动跳转，公式、变量不翻译等智能功能。
 	\item GitHub项目转为PDF（\href{https://github.com/congmingyige/convert-multiply-html-files-to-pdf}{\textbf{开源1}}和\href{https://github.com/congmingyige/convert-multiply-markdown-files-to-pdf}{\textbf{开源2}}）：开发自动化工具将GitHub cpp-learning项目和DeepLearning 500 questions项目的资源转为PDF，实现了针对爬虫限制的处理、图片自动加载、markdown和HTML到PDF的格式转换、自动点击等复杂功能。
-	\item 简历LaTex模板（\href{https://github.com/congmingyige/resume-zh_CN}{\textbf{开源}}）。	
+	\item 简历LaTex模板（\href{https://github.com/congmingyige/resume-zh_CN}{\textbf{开源}}）：可动态调整边缘空白宽度使PDF内容饱满。一个LaTex可以生成多个版本的简历，通过if/or等逻辑在不同的简历里组件不同的模块，可一键生成对应岗位名称的PDF文件。
 \end{itemize} 
-	
+
+
+\ifthenelse{\equal{\JobIndex}{1}}{
 \item \textbf{创意与技术力}：
 \begin{itemize}
 	\item \textbf{追求高质量工具，提高工作效率}：与Notion、Microsoft TODO官方人员有关于功能和使用上的大量邮件交流，不仅包括功能使用的提问、bug反馈，还涵盖功能优化的建议。主动和他人分享、推广高质量工具，推动工具生态的改进。
@@ -310,6 +328,8 @@
 		\item 进行负载与悬挂几何分析，确定最佳挂绳长度区间，确保挂饰挂在挎包上的功能性与美观度。精心挑选不同种类的精美挂绳和扣环。使用优质胶水确保无味无色，符合日常使用标准。
 	\end{itemize}
 \end{itemize}
+}
+
 
 \end{itemize}
 }
