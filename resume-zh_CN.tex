@@ -196,12 +196,8 @@
 \datedsubsection{\href{https://github.com/congmingyige/3D-Reconstruction-and-Quantitative-Analysis-of-Cerebral-Vasculature-under-Complex-Imaging-Conditions}{\textbf{基于Swin Transformer的脑损伤血管的分割}}}{2024.1-2025.5}
 \begin{itemize}
 \item 背景：脑血管合作题目。清华大学庄茁院士团队负责脑损伤物理实验，华中科技大学骆清铭院士团队负责成像，具有离体成像优势（数据完整、精细、可定位）。本人负责对三维全脑完整精细脑血管进行分割、骨架化和网络分析。脑血管分割属于典型的多尺度密集分割任务，损伤特征依赖于扩大感受野来有效提取，同时分割结果容易出现血管断裂和噪点问题。
-\item 方法：本工作系统性地评估了 19 种有监督深度学习方法和零样本方法，基于多层次、自注意力机制和滑动窗口的 Swin Transformer 效果最佳。将卷积层、窗口分割、相对位置编码和patch等操作从2D扩展到3D。增加了若干模块，结合 SENet 注意力机制，确保血管分割结果的完整性，采用$5 \times 1 \times 1$的卷积和$3 \times 3\ \times 3$卷积去Z方向和小范围连通性。采用小型学习网络和棋盘格检测器进行噪点和棋盘格的抑制。每2-3天可以处理15套健康或损伤数据的完整分割、骨架化和可视化，可用于医药企业的血流动力学模拟，临床基础研究。
-\item 技术栈：网络使用 Pytorch 实现。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理
-
-\item 难题1和解决方法：。
-\item 难题2和解决方法：Swin Transformer。采用了SENet，自动学习哪些特征通道更重要，保证了血管分割的完整性，增加Z方向的连通性，采叠加去增加小范围连通性，通过这些方法去解决血管断裂问题。同时分割存在少量噪点，以及添加的模块带来了棋盘格伪影，本工作采用了小型学习网络进行去噪，并且构建了棋盘格伪影去除模块。最后进行了消融实验来验证增加模块的有效性。
-\item 产出：，每2-3天可以处理15套数据的完整分割、骨架化和可视化。本工作实现了24套健康和损伤数据的完整处理，可用于医药企业的血流动力学模拟，临床基础研究。
+\item 方法：本工作系统性地评估了 19 种有监督深度学习方法和零样本方法，基于多层次、自注意力机制和滑动窗口的 Swin Transformer 效果最佳。将Patch Embedding、Patch Merging、Window Partition、Window Attention等操作从2D扩展到3D。增加了若干模块，结合 SENet 注意力机制，确保血管分割结果的完整性，采用$5 \times 1 \times 1$的卷积和$3 \times 3\ \times 3$卷积去Z方向和小范围连通性。采用小型学习网络和棋盘格检测器进行噪点和棋盘格的抑制。每2-3天可以处理15套健康或损伤数据的完整分割、骨架化和可视化，可用于医药企业的血流动力学模拟，临床基础研究。
+\item 技术栈：PyTorch、NumPy、SciPy、SimpleITK/nibabel（医学图像处理）、NetworkX（骨架化和网络分析）、分布式训练（DDP）、TensorBoard（训练监控）。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理。
 \end{itemize}
 
 \ifthenelse{\equal{\JobIndex}{2}}{
