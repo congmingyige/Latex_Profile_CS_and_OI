@@ -25,7 +25,7 @@
 
 %\setstretch{1.5}
 
-\def\JobIndex{4}
+\def\JobIndex{3}
 
 %--------------
 % 岗位配置
@@ -62,17 +62,17 @@
 % x=0 (通用/默认)
 \def\outputFileName{陈冠斌_简历}
 \or
-% x=1 (米哈游 客户端工具开发)
+% x=1 (米哈游 开发)
 \def\outputFileName{陈冠斌_米哈游_客户端工具开发}
 \or
 % x=2 (C++开发工程师-导航规划)
 \def\outputFileName{陈冠斌_高德_C++开发工程师_导航规划}
 \or
 % x=3 (小鹏)
-\def\outputFileName{小鹏}
+\def\outputFileName{陈冠斌_小鹏_自动驾驶软件开发}
 \or
 % x=4 (TikTok产品客户Android/iOS)
-\def\outputFileName{TikTok产品客户(Android/iOS)}
+\def\outputFileName{陈冠斌_TikTok产品客户端(Android/iOS)}
 \else
 % 默认/错误情况
 \def\outputFileName{陈冠斌-简历-错误}
@@ -112,13 +112,15 @@
 
 % TODO 自动测试最佳的名字
 
+%每次加减0.05，使恰好一页填满
+
 \ifcase\JobIndex
 % Case 0: 默认页边距
-\def\myMargin_0{1.90cm}
+\def\myMargin_0{0.95cm}
 \geometry{a4paper,left=\myMargin_0,right=\myMargin_0,top=\myMargin_0,bottom=\myMargin_0}
 \or
 % Case 1: 米哈游
-\def\myMargin_1{1.8cm}
+\def\myMargin_1{1.3cm}
 \geometry{a4paper,left=\myMargin_1,right=\myMargin_1,top=\myMargin_1,bottom=\myMargin_1}
 \or
 % Case 2: 高德C++开发工程师-导航
@@ -128,17 +130,21 @@
 \geometry{a4paper,left=2cm,right=2cm,top=3cm,bottom=3cm}
 \or
 % Case 3: 小鹏
-\geometry{a4paper,left=2.0cm,right=2.0cm,top=2.0cm,bottom=2.0cm}
+\geometry{a4paper,left=2cm,right=2cm,top=3cm,bottom=3cm}
 \or
 % Case 4: TikTok
-\def\myMargin_1{2.5cm}
-\geometry{a4paper,left=\myMargin_1,right=\myMargin_1,top=\myMargin_1,bottom=\myMargin_1}
+\def\myMargin_4{2.5cm}
+\geometry{a4paper,left=2.1cm,right=2.1cm,top=3cm,bottom=3cm}
 \else
 % 默认/错误情况
 \geometry{a4paper,margin=2.5cm}
 \fi
 
 \begin{document}
+\ifthenelse{\equal{\JobIndex}{3}}{
+	% 小鹏：字体增大一号
+	\fontsize{11pt}{13.2pt}\selectfont
+}{}
 \pagenumbering{gobble} % suppress displaying page number
 
 %--------------
@@ -158,7 +164,15 @@
 	\or
 	% Case 1: 米哈游
 	应聘岗位：游戏客户端工具开发
+	\or
+	\relax
+	\or
+	应聘岗位：自动驾驶软件开发（广州）
 	\fi
+	
+	%\ifthenelse{\equal{\JobIndex}{3}}{
+	%应聘岗位：自动驾驶软件开发（广州）
+	%}
 \end{minipage}%
 \begin{minipage}[t]{0.15\textwidth}
 	\vspace{-2.4em}
@@ -189,7 +203,7 @@
 \begin{itemize}[parsep=0.2ex]
   \item \textbf{ACM-ICPC区域赛银奖}（2018亚洲区域赛焦作分站银奖、2018亚洲区域赛青岛分站银奖）
   \item \textbf{高教社杯数学建模本科组全国二等奖}
-  \item NOIP信息学奥林匹克普及组全国一等奖（广东省第7） \& 数学竞赛全国一等奖（初二参加初中组）
+  \item NOIP信息学奥林匹克普及组全国一等奖（广东省第7）
 \end{itemize}
 
 %--------------
@@ -209,7 +223,12 @@
 		\item \textbf{深度学习模型学习与代码优化}：系统地学习双手和物体检测模型的训练与推理全流程，深入理解模型架构和数据处理流程。通过单元测试和集成测试，发现并修正了三个技术性错误，提升了代码质量和系统稳定性。
 		
 		\item \textbf{模块集成与系统设计}：将驾驶员双手占用识别模块集成至乘客监测系统（OMS），完成目标检测的前处理和后处理逻辑实现。针对新场景需求，重新设计了NMSMerger模块以及手部和物体检测相关的数据结构，确保模块能够高效、准确地识别驾驶员双手占用状态。
-	\end{itemize} 
+	\end{itemize}
+	\item \textbf{实现脸部图像自动注册和识别的测试与问题定位}：
+	\begin{itemize}
+		\item \textbf{源码研读}：阅读驾驶员监测系统（DMS）的源代码，系统性地掌握了脸部图像注册和识别的完整技术流程。
+		\item \textbf{自动化测试与问题定位}：开发自动化测试脚本，对上百个视频样本进行批量脸部图像注册和识别测试，获取注册失败和注册成功但识别失败两种异常情况。
+	\end{itemize}
 \end{itemize}
 
 \datedsubsection{\textbf{中国三星 \quad Android SystemUI研发 \quad Java、Kotlin \quad 广州}}{2025.6-2025.7}
@@ -241,27 +260,23 @@
 % 条件分支内容
 %--------------
 
-\ifthenelse{\equal{\JobIndex}{2}}{
-	\section{图论研究}
-	\begin{itemize}
-		\item \textbf{掌握/了解常见图论算法}：DFS/BFS/Dijkstra/Bellman–Ford/SPFA/Kruskal/Prim/拓扑排序/Tarjan/哈密顿图/LCA/倍增算法/树链剖分/树分治/树的直径/线段树/网络流/A*/VRP/强化学习。
-		\item \textbf{博客}：撰写500+篇博客文章，内容涉及图论算法的使用和研究工作。
-		\item \textbf{编程出题}：参与DFS/BFS/多源BFS/Dijkstra/SPFA/哈密顿图/网络流等图论题目的出题和验题工作。
-		\item \textbf{实际应用}：在华为杯等比赛中使用图论算法解决统计图的环数目等复杂问题。设计可移动的底部附带双滚轮垃圾桶来收集垃圾（机器人）。
-	\end{itemize}
+\ifthenelse{\equal{\JobIndex}{1}}{
+	\section{游戏客户端工具开发经历}
 }
 
-\ifthenelse{\equal{\JobIndex}{1}}{
-	\section{游戏客户端工具开发}
+\ifthenelse{\equal{\JobIndex}{2}}{
+	\section{开发经历}
+}
+
+\ifthenelse{\equal{\JobIndex}{3}}{
+	\section{开发经历}
 }
 
 \ifthenelse{\equal{\JobIndex}{4}}{
-	\section{客户端开发}
+	\section{客户端开发经历}
 }
 
-\ifthenelse{\equal{\JobIndex}{2}}{
-	\section{客户端工具开发}
-}
+
 
 \ifthenelse{\equal{\JobIndex}{1}\OR\equal{\JobIndex}{4}\OR\equal{\JobIndex}{2}\OR\equal{\JobIndex}{3}}{
 %\ifthenelse{\equal{\JobIndex}{2}}{
@@ -292,13 +307,23 @@
 	\item 简历LaTex模板（\href{https://github.com/congmingyige/resume-zh_CN}{\textbf{开源}}）：可动态调整边缘空白宽度、段落宽度使PDF内容饱满。一个LaTex可以生成多个版本的简历，通过if/or等逻辑在不同的简历里组件不同的模块，可一键生成对应岗位名称的PDF文件。
 \end{itemize}
 
-\ifthenelse{\equal{\JobIndex}{4}\OR\equal{\JobIndex}{2}}{
+\ifthenelse{\equal{\JobIndex}{4}\OR\equal{\JobIndex}{2}\OR\equal{\JobIndex}{3}}{
 \item \textbf{全栈开发}：
 \begin{itemize}
 	\item 带有用户操作功能的文章阅读网页(Front-End: Vue.js, HTML/CSS, JavaScript, HTTP; \, Back-End: Python, Django.db)：用户和文章增删查改,用户对文章的点赞、收藏和评论,用户撰写和认可的所有文章。
 	\item 电影推送系统(C, WinAPI(窗口管理, 消息处理, 控件管理, 绘图和图形, 文件操作))：图文界面和操作, 电影介绍, 不同情景电影推荐。
 	\item 地铁在线订票系统(Java, GUI, Socket, Thread, MySQL, Algorithm)：多层图层、图缩放和多种点击方式, 点距离算法设计。
 \end{itemize}
+}
+
+\ifthenelse{\equal{\JobIndex}{4}\OR\equal{\JobIndex}{2}\OR\equal{\JobIndex}{3}}{
+	\item \textbf{工具使用}：
+	\begin{itemize}
+		\item \textbf{开发与调试工具}：熟练掌握Git版本控制、CMake构建系统、gdb调试器、perf性能分析工具、valgrind内存检测工具等。
+		%\item \textbf{效率工具}：熟练使用Notion、Everything、Dropbox等效率工具，提升工作与信息管理效率。
+		\item \textbf{数据管理}：负责实验室集群数千TB数据备份工作，采用硬盘、磁带、光盘等多种存储介质。
+		% 制定并执行多级备份策略，确保数据安全与可恢复性
+	\end{itemize}
 }
 
 \ifthenelse{\equal{\JobIndex}{1}}{
@@ -328,6 +353,22 @@
 
 
 \end{itemize}
+}
+
+
+\ifthenelse{\equal{\JobIndex}{2}\OR\equal{\JobIndex}{3}}{
+	\section{图论（路径规划）研究}
+	\begin{itemize}
+		\item \textbf{掌握/了解常见图论算法}：
+		\begin{itemize}
+			\item 基础图算法：DFS\,/\,BFS\,/\,Dijkstra\,/\,Bellman-Ford\,/\,SPFA\,/\,Kruskal\,/\,Prim\,/\,拓扑排序\,/\,Tarjan
+			\item 树算法：LCA\,/\,树链剖分\,/\,树分治\,/\,树的直径
+			\item 数据结构与高级算法：线段树\,/\,网络流\,/\,A*\,/\,VRP\,/\,哈密顿图\,/\,倍增算法\,/\,强化学习
+		\end{itemize}
+		\item \textbf{博客}：撰写500+篇博客文章，内容涉及图论算法的使用和研究工作。
+		\item \textbf{编程出题}：参与DFS\,/\,BFS\,/\,多源BFS\,/\,Dijkstra\,/\,SPFA\,/\,哈密顿图\,/\,网络流等图论题目的出题和验题工作。
+		\item \textbf{实际应用}：在华为杯等比赛中使用图论算法解决统计图的环数目等复杂问题。设计可移动的底部附带双滚轮垃圾桶来收集垃圾（机器人）。
+	\end{itemize}
 }
 
 \end{document}
