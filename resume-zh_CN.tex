@@ -25,23 +25,48 @@
 
 %\setstretch{1.5}
 
-\def\JobIndex{0}
+\def\JobIndex{1}
 
 %--------------
 % 岗位配置
 %--------------
 
-\def\outputFileName{陈冠斌-简历-通用}
+% 自动根据\outputFileName变量值编译PDF
+% 
+% 【方法1：使用Python脚本（推荐）】
+% 1. 运行：python compile_resume.py
+% 2. 脚本会自动提取\outputFileName的值并编译
+% 
+% 【方法2：使用批处理文件（Windows）】
+% 1. 双击运行：compile_resume.bat
+% 
+% 【方法3：TeXstudio用户命令配置】
+% 选项A（使用Python脚本）：
+% 1. 选项 -> 配置TeXstudio -> 构建 -> 用户命令
+% 2. 添加新命令：C:\Users\chenguanbin\anaconda3\python.exe compile_resume.py
+% python compile_resume.py不行
+% 3. 工具 -> 用于 -> X指令（或自定义快捷键）
+% 
+% 选项B（使用批处理文件，仅Windows）：
+% 1. 选项 -> 配置TeXstudio -> 构建 -> 用户命令
+% 2. 添加新命令：compile_resume.bat 或 cmd /c compile_resume.bat
+% 3. 工具 -> 用于 -> X指令（或自定义快捷键）
+% 
+% 【方法4：手动编译】
+% xelatex -jobname=<outputFileName值> -synctex=1 -interaction=nonstopmode --shell-escape resume-zh_CN.tex
+% 需要运行两次以确保交叉引用正确
+
+\def\outputFileName{陈冠斌_简历}
 
 \ifcase\JobIndex
 % x=0 (通用/默认)
-\def\outputFileName{陈冠斌-简历-通用}
+\def\outputFileName{陈冠斌_简历}
 \or
 % x=1 (米哈游 客户端工具开发)
-\def\outputFileName{陈冠斌-米哈游-客户端工具开发}
+\def\outputFileName{陈冠斌_米哈游_客户端工具开发}
 \or
 % x=2 (C++开发工程师-导航规划)
-\def\outputFileName{C++开发工程师-导航规划}
+\def\outputFileName{陈冠斌_高德_C++开发工程师_导航规划}
 \or
 % x=3 (小鹏)
 \def\outputFileName{小鹏}
@@ -85,9 +110,11 @@
 % 页边距配置
 %--------------
 
+% TODO 自动测试最佳的名字
+
 \ifcase\JobIndex
 % Case 0: 默认页边距
-\geometry{a4paper,left=1.4cm,right=1.4cm,top=1.4cm,bottom=1.4cm}
+\geometry{a4paper,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
 \or
 % Case 1: 米哈游
 \geometry{a4paper,left=1.8cm,right=1.8cm,top=1.8cm,bottom=1.8cm}
@@ -198,7 +225,7 @@
 \begin{itemize}
 \item \textbf{背景}：跨学科脑血管研究合作课题，清华大学庄茁院士团队负责脑损伤物理实验，华中科技大学骆清铭院士团队负责成像，具有离体成像优势（数据完整、精细、可定位）。本人负责对三维全脑完整精细脑血管进行分割、骨架化和网络分析。脑血管分割属于典型的多尺度密集分割任务，损伤特征的准确提取需要扩大感受野，同时分割结果容易出现血管断裂和噪点问题。
 
-\item \textbf{方法}：本工作系统性地评估了 $19$ 种有监督深度学习方法和零样本方法，基于多层次特征融合、自注意力机制和滑动窗口设计的 Swin Transformer 效果最佳。将Patch Embedding、Patch Merging、Window Partition、Window Attention等操作从2D扩展到3D空间。增加了若干模块，结合 SENet 通道注意力机制，增强血管分割结果的完整性，采用$5 \times 1 \times 1$的卷积和$3 \times 3 \times 3$卷积叠加分别增强Z方向和小尺度连通性。采用轻量级去噪网络和棋盘格伪影检测与抑制模块对噪点进行抑制。每2-3天的周期，可以处理15套健康或损伤数据的完整分割、骨架化和可视化。处理结果用于医药企业的血流动力学模拟和临床基础研究。
+\item \textbf{方法}：本工作系统性地评估了 $19$ 种有监督深度学习方法和零样本方法，基于多层次特征融合、自注意力机制和滑动窗口设计的 Swin Transformer 效果最佳。将Patch Embedding、Patch Merging、Window Partition、Window Attention等操作从2D模型修改为3D模型。增加若干模块，采用 SENet 通道注意力机制，增强血管分割结果的完整性，采用$5 \times 1 \times 1$的卷积和$3 \times 3 \times 3$卷积叠加分别增强Z方向和小尺度连通性，采用轻量级去噪网络和棋盘格伪影检测与抑制模块对噪点进行抑制。每2-3天的周期，可以处理15套健康或损伤数据的完整分割、骨架化和可视化。处理结果用于医药企业的血流动力学模拟和临床基础研究。
 
 \item \textbf{技术栈}：PyTorch、NumPy、SciPy、SimpleITK/nibabel/libtiff（医学图像处理）、NetworkX（骨架化和网络分析）、DataParallel、TensorBoard（训练监控）。实验在配备 4 个 NVIDIA A100 GPU 80GB 的服务器上并行训练，在15个配备NVIDIA RTX 5000 32GB的服务器上进行推理。
 
@@ -244,7 +271,7 @@
 \section{游戏客户端工具开发相关经验}
 \begin{itemize}
 \item \textbf{游戏体验}：
-	深度体验《雀魂》《丝之歌》《崩坏：星穹铁道》等多款游戏，从早期版本到付费版本均有完整体验。通过游戏社群和身边同学了解不同游戏的评价与设计理念，对游戏机制、用户体验设计和交互流程有深入理解，能够从玩家和开发者双重视角分析游戏设计。
+	深度体验《崩坏：星穹铁道》《丝之歌》《雀魂》等多款游戏，个人从贫穷肝剧情到稍微有钱充月卡都有体验。通过游戏社群和身边同学了解不同游戏的评价与设计理念，对游戏机制、用户体验设计和交互流程有深入理解，能够从玩家和开发者双重视角分析游戏设计。
 
 \item \textbf{客户端开发}：
 \begin{itemize}
