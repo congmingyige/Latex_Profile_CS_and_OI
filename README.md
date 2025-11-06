@@ -1,3 +1,6 @@
+# TexStudio使用
+C:\Users\chenguanbin\anaconda3\python.exe compile_resume.py
+
 # 不同分支的介绍和使用
 - OI分支：编程竞赛（比如找编程竞赛教练的工作），参见 resume-zh_CN.tex 和 resume-zh_CN.pdf
 - CS分支：计算机软件开发/C++开发/后端（比如找一些大中厂的工作），参见 resume-zh_CN.tex 和 resume-zh_CN.pdf
