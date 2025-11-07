@@ -214,7 +214,7 @@
 一等学业奖学金，共青团先进个人
 
 \datedsubsection{\textbf{兰州大学},\textbf{计算机科学与技术},\textit{学士}}{2015.9 - 2019.6}
-学业成绩排名2/69（前3\%），\textbf{国家奖学金}，兰州大学优秀毕业生
+学业成绩排名2/69，\textbf{国家奖学金}，兰州大学优秀毕业生
 
 %--------------
 % 竞赛获奖
@@ -328,7 +328,7 @@
 	\item iOS设备深度使用（iPhone、iPad、Mac、Watch、AirPods），对ios26新功能Liquid Glass和Snipaste进行研究(\href{https://github.com/congmingyige/Silksong-Sightseeing-Tour-Plugin}{\textbf{开源}})。
 	\item 积累数百小时与Apple客服的交流经验，不仅解决功能使用问题，更积极参与产品改进建议，对iOS生态有深入理解。
 \end{itemize}
-}
+}{}% 结束 \ifboolexpr
 
 \item \textbf{工程工具开发}：
 \begin{itemize}
@@ -345,7 +345,7 @@
 	\item 电影推送系统（\href{https://github.com/congmingyige/Movie-Recommendation-System}{\textbf{开源}}）(C, WinAPI(窗口管理, 消息处理, 控件管理, 绘图和图形, 文件操作))：图文界面和操作, 电影介绍, 不同情景电影推荐。
 	\item 地铁在线订票系统（\href{https://github.com/congmingyige/MTR-Online-Booking-System-with-Map}{\textbf{开源}}）(Java, GUI, Socket, Thread, MySQL, Algorithm)：多层图层、图缩放和多种点击方式, 点距离算法设计。
 \end{itemize}
-}
+}{}% 结束 \ifboolexpr
 
 \ifboolexpr{test {\ifnumequal{\JobIndex}{4}} or test {\ifnumequal{\JobIndex}{2}} or test {\ifnumequal{\JobIndex}{3}} or test {\ifnumequal{\JobIndex}{5}} or test {\ifnumequal{\JobIndex}{6}} or test {\ifnumequal{\JobIndex}{7}}}{
 	\item \textbf{工具使用}：
@@ -354,6 +354,14 @@
 		%\item \textbf{效率工具}：熟练使用Notion、Everything、Dropbox等效率工具，提升工作与信息管理效率。
 		\item \textbf{数据管理}：负责实验室集群PB级数据备份工作，采用硬盘、磁带、光盘等多种存储介质。
 		% 制定并执行多级备份策略，确保数据安全与可恢复性
+	\end{itemize}
+}{}% 结束 \ifboolexpr
+
+\ifthenelse{\equal{\JobIndex}{8}}{
+	\item \textbf{算法与汇编和数据库的结合}：
+	\begin{itemize}
+		https://github.com/congmingyige/Algorithm_with_Database_Assembly_HammingCode
+		
 	\end{itemize}
 }
 
@@ -382,7 +390,8 @@
 \end{itemize}
 }
 
-
+\end{itemize}% 关闭第315行开始的 \begin{itemize}
+}{}% 结束第一个 \ifboolexpr
 
 \ifboolexpr{test {\ifnumequal{\JobIndex}{2}} or test {\ifnumequal{\JobIndex}{3}} or test {\ifnumequal{\JobIndex}{6}}}{
 	\section{图论（路径规划）经历}
@@ -397,6 +406,6 @@
 		\item \textbf{编程出题}（\href{https://github.com/congmingyige/ACM-ICPC_Create_Algorithm_Problems_by_XiaoC}{\textbf{开源}}）：参与DFS\,/\,BFS\,/\,多源BFS\,/\,Dijkstra\,/\,SPFA\,/\,哈密顿图\,/\,网络流等图论题目的出题和验题工作。
 		\item \textbf{实际应用}：在华为杯等比赛中使用图论算法解决统计图的环数目等复杂问题。设计可移动的底部附带双滚轮垃圾桶来收集垃圾（机器人）。
 	\end{itemize}
-}
+}{}% 结束 \ifboolexpr
 
 \end{document}
