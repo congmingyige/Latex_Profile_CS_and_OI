@@ -27,7 +27,7 @@
 %\setstretch{1.5}
 
 % 开发:5 ; 算法工程师:0 ; 自动驾驶算法:10 ; 自动驾驶开发:3 ; 游戏:1
-\def\JobIndex{1}
+\def\JobIndex{5}
 
 %--------------
 % 岗位配置
@@ -89,7 +89,7 @@
 \def\outputFileName{陈冠斌_开发_偏底层}
 \or
 % x=9
-\def\outputFileName{陈冠斌_雅江}
+\def\outputFileName{陈冠斌_简历_雅江}
 \or
 % x=10
 \def\outputFileName{陈冠斌_简历_自动驾驶算法}
@@ -142,7 +142,7 @@
 \geometry{a4paper,left=\myMargin_0,right=\myMargin_0,top=\myMargin_0,bottom=\myMargin_0}
 \or
 % Case 1: 米哈游
-\def\myMargin_1{1.1cm}
+\def\myMargin_1{1.0cm}
 \geometry{a4paper,left=\myMargin_1,right=\myMargin_1,top=\myMargin_1,bottom=\myMargin_1}
 \or
 % Case 2: 高德C++开发工程师-导航
@@ -150,13 +150,13 @@
 \geometry{a4paper,hmargin=2.7cm,vmargin=2cm}
 \or
 % Case 3: 小鹏
-\geometry{a4paper,hmargin=2cm,vmargin=2.8cm}
+\geometry{a4paper,hmargin=2cm,vmargin=2.7cm}
 \or
 % Case 4: TikTok
 \geometry{a4paper,hmargin=2.1cm,vmargin=3cm}
 \or
 % Case 5: 闲置/保留
-\geometry{a4paper,hmargin=2.1cm,vmargin=3cm}
+\geometry{a4paper,hmargin=2.1cm,vmargin=3.5cm}
 \or
 % Case 6: 闲置/保留
 \geometry{a4paper,hmargin=2.0cm,vmargin=4cm}
@@ -168,7 +168,9 @@
 \relax
 \or
 % Case 9: 闲置/保留
-\relax
+%\def\myMargin_9{1.7cm}
+%\geometry{a4paper,left=\myMargin_9,right=\myMargin_9,top=\myMargin_9,bottom=\myMargin_9}
+\geometry{a4paper,hmargin=2.3cm,vmargin=3cm}
 \or
 % Case 10: 自定义边距
 \def\myMargin_10{1.05cm}
@@ -249,7 +251,13 @@
 \begin{itemize}[parsep=0.2ex]
   \item \textbf{ACM-ICPC区域赛银奖}（2018亚洲区域赛焦作分站银奖、2018亚洲区域赛青岛分站银奖）
   \item \textbf{高教社杯数学建模本科组全国二等奖}
-  % \item NOIP信息学奥林匹克普及组全国一等奖（广东省第7）
+ 
+\ifboolexpr{test {\ifnumequal{\JobIndex}{9}}}{
+  \item 中国高校计算机大赛-团体程序设计天梯赛(CCCC)甘肃赛"珠峰登顶"组特等奖
+  \item CSP计算机认证多次 $\geq$ 300分
+  \item NOIP普及组全国一等奖（广东省第7） \& NOIP提高组全国二等奖（考点广东省）
+}
+
 \end{itemize}
 
 %--------------
@@ -311,7 +319,7 @@
 %--------------
 
 \ifthenelse{\equal{\JobIndex}{1}}{
-	\section{游戏客户端工具开发经历}
+	\section{游戏开发经历}
 }
 
 \ifthenelse{\equal{\JobIndex}{2}}{
@@ -352,7 +360,7 @@
 
 \ifthenelse{\equal{\JobIndex}{1}}{
 \item \textbf{游戏产品洞察}：
-	深度体验《崩坏：星穹铁道》《丝之歌》《雀魂》等多款游戏，从免费模式（肝剧情）到付费模式（包括月卡等）均有完整体验。通过游戏社群和身边同学了解不同游戏的评价与设计理念，对游戏机制、用户体验设计和交互流程有深入理解，能够从玩家和开发者双重视角分析游戏设计。
+	深度体验《崩坏：星穹铁道》《鸣潮》《丝之歌》《雀魂》等多款游戏，从免费模式（肝剧情）到付费模式（包括月卡等）均有完整体验。通过游戏社群和身边同学了解不同游戏的评价与设计理念，对游戏机制、用户体验设计和交互流程有深入理解，能够从玩家和开发者双重视角分析游戏设计。
 }
 
 \ifboolexpr{test {\ifnumequal{\JobIndex}{1}} or test {\ifnumequal{\JobIndex}{2}} or test {\ifnumequal{\JobIndex}{3}} or test {\ifnumequal{\JobIndex}{4}} or test {\ifnumequal{\JobIndex}{5}} or test {\ifnumequal{\JobIndex}{7}} or test {\ifnumequal{\JobIndex}{9}}}{
@@ -369,7 +377,7 @@
 	\item 深度学习项目采用自动化脚本对15台服务器14个流程进行统一管理和监控，实现了高效的分布式任务调度和状态监控。
 	\item 网页文献翻译(\href{https://github.com/congmingyige/translate-ignore-mathjax-available-for-google-translate}{\textbf{开源}})：使用Power Automate和Tampermonkey Javascript开发自动化翻译工具，支持多篇网页文献的批量翻译，包括浏览器滚动、页面自动跳转，公式、变量不翻译等智能功能。
 	\item GitHub项目转为PDF（\href{https://github.com/congmingyige/convert-multiply-html-files-to-pdf}{\textbf{开源1}}和\href{https://github.com/congmingyige/convert-multiply-markdown-files-to-pdf}{\textbf{开源2}}）：开发自动化工具将GitHub cpp-learning项目和DeepLearning 500 questions项目的资源转为PDF，实现了针对爬虫限制的处理、图片自动加载、markdown和HTML到PDF的格式转换、自动点击等复杂功能。
-	\item 简历LaTex模板（\href{https://github.com/congmingyige/Resume_LaTex}{\textbf{开源}}）：可动态调整边缘空白宽度、段落宽度使PDF内容饱满。一个LaTex可以生成多个版本的简历，通过if/or等逻辑在不同的简历里组件不同的模块，可一键生成对应岗位名称的PDF文件。
+	\item 简历LaTex模板（\href{https://github.com/congmingyige/Resume_LaTex}{\textbf{开源}}）：可动态调整边缘空白宽度、段落宽度使PDF内容饱满。可以生成多个版本的简历，通过if/or等逻辑在不同的简历里组件不同的模块，可一键生成对应岗位名称的PDF文件。
 \end{itemize}
 
 \ifboolexpr{test {\ifnumequal{\JobIndex}{1}} or test {\ifnumequal{\JobIndex}{2}} or test {\ifnumequal{\JobIndex}{3}} or test {\ifnumequal{\JobIndex}{4}} or test {\ifnumequal{\JobIndex}{5}} or test {\ifnumequal{\JobIndex}{6}} or test {\ifnumequal{\JobIndex}{7}}  or test {\ifnumequal{\JobIndex}{9}}}{
@@ -381,7 +389,7 @@
 \end{itemize}
 }{}% 结束 \ifboolexpr
 
-\ifboolexpr{test {\ifnumequal{\JobIndex}{4}} or test {\ifnumequal{\JobIndex}{2}} or test {\ifnumequal{\JobIndex}{3}} or test {\ifnumequal{\JobIndex}{5}} or test {\ifnumequal{\JobIndex}{7}}  or test {\ifnumequal{\JobIndex}{9}}}{
+\ifboolexpr{test {\ifnumequal{\JobIndex}{1}} or test {\ifnumequal{\JobIndex}{4}} or test {\ifnumequal{\JobIndex}{2}} or test {\ifnumequal{\JobIndex}{3}} or test {\ifnumequal{\JobIndex}{5}} or test {\ifnumequal{\JobIndex}{7}}  or test {\ifnumequal{\JobIndex}{9}}}{
 	\item \textbf{工具使用}：
 	\begin{itemize}
 		\item \textbf{开发与调试工具}：熟练掌握/了解Git版本控制、CMake构建系统、gdb调试器、perf性能分析工具、valgrind内存检测工具等。
